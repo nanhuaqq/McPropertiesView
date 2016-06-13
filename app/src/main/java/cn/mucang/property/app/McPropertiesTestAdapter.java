@@ -82,6 +82,7 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
         if ( totalRowCount == 0 ){
             totalRowCount = 1;
             rowIndexMapSectionArray.put(0,-1);
+            rowIndexMapRowIndexInSectionArray.put(0,0);
             int sectionCount = getSectionCount();
             for ( int sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++ ){
                 int rowCountInThisSection = getRowCount(sectionIndex);
@@ -89,7 +90,7 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
                 int rowIndexInSection = 0;
                 for ( int startRowIndex = totalRowCount; startRowIndex < endRowIndex; startRowIndex++,rowIndexInSection ++ ){
                     rowIndexMapSectionArray.put(startRowIndex,sectionIndex);
-                    rowIndexMapRowIndexInSectionArray.put(startRowIndex,rowCountInThisSection);
+                    rowIndexMapRowIndexInSectionArray.put(startRowIndex,rowIndexInSection);
                     if ( startRowIndex == totalRowCount ){ //说明是sectionTitle区域
                         sectionTitlePositionsSet.set(startRowIndex,true);
                     }else{
