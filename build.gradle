@@ -1,0 +1,42 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+apply plugin: 'mc-deploy'
+buildscript {
+    repositories {
+        mavenLocal()
+        maven {
+            url "http://nexus.mucang.cn:8082/nexus/content/groups/public/"
+//            url "http://192.168.0.44:8081/nexus/content/groups/public/"
+        }
+    }
+    configurations.classpath.resolutionStrategy.cacheDynamicVersionsFor 10, 'seconds'
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.0'
+        classpath 'cn.mucang.simple.plugins:mucang-deploy:+'
+        classpath 'nu.studer:gradle-credentials-plugin:1.0.1'
+
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        maven {
+            url mavenNexusUrl
+            credentials {
+                username project.properties["deploy.userName"]
+                password project.credentials[username]
+            }
+        }
+        jcenter()
+        mavenCentral()
+    }
+}
+
+subprojects {
+    task allDeps(type: DependencyReportTask) {}
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

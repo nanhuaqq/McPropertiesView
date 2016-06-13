@@ -1,0 +1,6286 @@
+{
+cacheTime: 300,
+checkTime: -1,
+data: {
+cars: [
+{
+brandId: "3",
+carId: 24053,
+carName: "奥迪A4L 2016款 30TFSI 典藏版 自动舒适型",
+serialId: 13
+},
+{
+brandId: "3",
+carId: 24054,
+carName: "奥迪A4L 2016款 35TFSI 典藏版 自动标准型",
+serialId: 13
+},
+{
+brandId: "3",
+carId: 24061,
+carName: "奥迪A4L 2016款 35TFSI 典藏版 S line舒适型",
+serialId: 13
+},
+{
+brandId: "3",
+carId: 24056,
+carName: "奥迪A4L 2016款 35TFSI 典藏版 S line豪华型",
+serialId: 13
+},
+{
+brandId: "3",
+carId: 24057,
+carName: "奥迪A4L 2016款 45TFSI 典藏版 quattro 个性运动型",
+serialId: 13
+}
+],
+empty: false,
+items: [
+{
+id: 1,
+items: [
+{
+bold: 0,
+id: 2,
+name: "车型名称",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "奥迪A4L 2016款 30 TFSI 典藏版 自动舒适型"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "奥迪A4L 2016款 35 TFSI 典藏版 自动标准型"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "奥迪A4L 2016款 35 TFSI 典藏版 S line舒适型"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "奥迪A4L 2016款 35 TFSI 典藏版 S line豪华型"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "奥迪A4L 2016款 45 TFSI 典藏版 quattro个性运动型"
+}
+]
+},
+{
+bold: 0,
+id: 3,
+name: "厂商指导价(元)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "28.99万"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "31.28万"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "33.29万"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "39.39万"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "36.3万"
+}
+]
+},
+{
+bold: 2,
+id: 1025,
+name: "全国最低价(元)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "18.84万"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "20.33万"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "21.77万"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "26.02万"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "23.6万"
+}
+]
+},
+{
+bold: 1,
+id: 9000,
+name: "询价订单 (最近30天)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "13045笔"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "6578笔"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "3930笔"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "661笔"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "1287笔"
+}
+]
+},
+{
+bold: 0,
+id: 4,
+name: "厂商",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "一汽-大众奥迪"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "一汽-大众奥迪"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "一汽-大众奥迪"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "一汽-大众奥迪"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "一汽-大众奥迪"
+}
+]
+},
+{
+bold: 0,
+id: 5,
+name: "级别",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "中型车"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "中型车"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "中型车"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "中型车"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "中型车"
+}
+]
+},
+{
+bold: null,
+id: 1024,
+name: "上市日期",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 6,
+name: "发动机",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "1.8T 160马力 L4"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "2.0T 180马力 L4"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "2.0T 180马力 L4"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "2.0T 180马力 L4"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "2.0T 224马力 L4"
+}
+]
+},
+{
+bold: 0,
+id: 7,
+name: "变速箱",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "CVT无级变速(模拟8挡)"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "CVT无级变速(模拟8挡)"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "CVT无级变速(模拟8挡)"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "CVT无级变速(模拟8挡)"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "7挡双离合"
+}
+]
+},
+{
+bold: 0,
+id: 8,
+name: "长*宽*高(mm)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "4761*1826*1439"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "4761*1826*1439"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "4761*1826*1439"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "4761*1826*1439"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "4761*1826*1439"
+}
+]
+},
+{
+bold: 0,
+id: 9,
+name: "车身结构",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "4门5座三厢车"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "4门5座三厢车"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "4门5座三厢车"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "4门5座三厢车"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "4门5座三厢车"
+}
+]
+},
+{
+bold: 0,
+id: 10,
+name: "最高车速(km/h)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "218"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "230"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "230"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "230"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "250"
+}
+]
+},
+{
+bold: 2,
+id: 11,
+name: "官方0-100km/h加速(s)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "8.7"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "8.2"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "8.2"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "8.2"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "6.6"
+}
+]
+},
+{
+bold: 2,
+id: 12,
+name: "实测0-100km/h加速(s)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 2,
+id: 13,
+name: "实测100-0km/h制动(m)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 2,
+id: 14,
+name: "实测油耗(L/100km)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 2,
+id: 15,
+name: "工信部综合油耗(L/100km)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "6.5"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "6.2"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "6.2"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "6.2"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "7.4"
+}
+]
+},
+{
+bold: 2,
+id: 1026,
+name: "网友油耗(L/100km)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 2,
+id: 1027,
+name: "每年油费(元)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 16,
+name: "实测离地间隙(mm)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 17,
+name: "整车质保",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "三年或10万公里"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "三年或10万公里"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "三年或10万公里"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "三年或10万公里"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "三年或10万公里"
+}
+]
+}
+],
+name: "基本参数"
+},
+{
+id: 18,
+items: [
+{
+bold: 1,
+id: 19,
+name: "长度(mm)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "4761"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "4761"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "4761"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "4761"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "4761"
+}
+]
+},
+{
+bold: 1,
+id: 20,
+name: "宽度(mm)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "1826"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "1826"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "1826"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "1826"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "1826"
+}
+]
+},
+{
+bold: 1,
+id: 21,
+name: "高度(mm)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "1439"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "1439"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "1439"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "1439"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "1439"
+}
+]
+},
+{
+bold: 1,
+id: 22,
+name: "轴距(mm)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "2869"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "2869"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "2869"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "2869"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "2869"
+}
+]
+},
+{
+bold: 1,
+id: 23,
+name: "前轮距(mm)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 1,
+id: 24,
+name: "后轮距(mm)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 25,
+name: "最小离地间隙(mm)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "118"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "118"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "118"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "118"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "118"
+}
+]
+},
+{
+bold: 0,
+id: 26,
+name: "整备质量(kg)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "1590"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "1600"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "1600"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "1600"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "1710"
+}
+]
+},
+{
+bold: 0,
+id: 27,
+name: "车身结构",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "三厢车"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "三厢车"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "三厢车"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "三厢车"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "三厢车"
+}
+]
+},
+{
+bold: 0,
+id: 28,
+name: "车门数(个)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "4"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "4"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "4"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "4"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "4"
+}
+]
+},
+{
+bold: 0,
+id: 29,
+name: "座位数(个)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "5"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "5"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "5"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "5"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "5"
+}
+]
+},
+{
+bold: 1,
+id: 30,
+name: "油箱容积(L)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "65"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "65"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "65"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "65"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "65"
+}
+]
+},
+{
+bold: 1,
+id: 31,
+name: "行李厢容积(L)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "480"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "480"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "480"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "480"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "480"
+}
+]
+}
+],
+name: "车身"
+},
+{
+id: 32,
+items: [
+{
+bold: 0,
+id: 33,
+name: "发动机型号",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "EA888"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "EA888"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "EA888"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "EA888"
+}
+]
+},
+{
+bold: 0,
+id: 34,
+name: "排量(mL)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "1798"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "1984"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "1984"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "1984"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "1984"
+}
+]
+},
+{
+bold: 0,
+id: 35,
+name: "排量(L)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "1.8"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "2.0"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "2.0"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "2.0"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "2.0"
+}
+]
+},
+{
+bold: 0,
+id: 36,
+name: "进气形式",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "涡轮增压"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "涡轮增压"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "涡轮增压"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "涡轮增压"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "涡轮增压"
+}
+]
+},
+{
+bold: 0,
+id: 37,
+name: "气缸排列形式",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "L"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "L"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "L"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "L"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "L"
+}
+]
+},
+{
+bold: 0,
+id: 38,
+name: "气缸数(个)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "4"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "4"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "4"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "4"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "4"
+}
+]
+},
+{
+bold: 0,
+id: 39,
+name: "每缸气门数(个)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "4"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "4"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "4"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "4"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "4"
+}
+]
+},
+{
+bold: 0,
+id: 40,
+name: "压缩比",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 41,
+name: "配气机构",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "DOHC"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "DOHC"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "DOHC"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "DOHC"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "DOHC"
+}
+]
+},
+{
+bold: 0,
+id: 42,
+name: "缸径(mm)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 43,
+name: "行程(mm)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 1,
+id: 44,
+name: "最大马力(Ps)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "160"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "180"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "180"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "180"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "224"
+}
+]
+},
+{
+bold: 1,
+id: 45,
+name: "最大功率(kW)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "118"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "132"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "132"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "132"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "165"
+}
+]
+},
+{
+bold: 1,
+id: 46,
+name: "最大功率转速(rpm)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "4500-6200"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "4000-6000"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "4000-6000"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "4000-6000"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "4500-6200"
+}
+]
+},
+{
+bold: 1,
+id: 47,
+name: "最大扭矩(N・m)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "250"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "320"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "320"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "320"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "350"
+}
+]
+},
+{
+bold: 1,
+id: 48,
+name: "最大扭矩转速(rpm)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "1500-4500"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "1500-3800"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "1500-3800"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "1500-3800"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "1500-4500"
+}
+]
+},
+{
+bold: 0,
+id: 49,
+name: "发动机特有技术",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "AVS"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "AVS"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "AVS"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "AVS"
+}
+]
+},
+{
+bold: 0,
+id: 50,
+name: "燃料形式",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "汽油"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "汽油"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "汽油"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "汽油"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "汽油"
+}
+]
+},
+{
+bold: 0,
+id: 51,
+name: "燃油标号",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "97号(京95号)"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "97号(京95号)"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "97号(京95号)"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "97号(京95号)"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "97号(京95号)"
+}
+]
+},
+{
+bold: 0,
+id: 52,
+name: "供油方式",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "直喷"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "混合喷射"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "混合喷射"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "混合喷射"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "混合喷射"
+}
+]
+},
+{
+bold: 0,
+id: 53,
+name: "缸盖材料",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "铝"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "铝"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "铝"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "铝"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "铝"
+}
+]
+},
+{
+bold: 0,
+id: 54,
+name: "缸体材料",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "铁"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "铁"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "铁"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "铁"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "铁"
+}
+]
+},
+{
+bold: 0,
+id: 55,
+name: "环保标准",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "国IV(国V)"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "国IV(国V)"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "国IV(国V)"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "国IV(国V)"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "国IV(国V)"
+}
+]
+}
+],
+name: "发动机"
+},
+{
+id: 56,
+items: [
+{
+bold: 0,
+id: 57,
+name: "简称",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "CVT无级变速(模拟8挡)"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "CVT无级变速(模拟8挡)"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "CVT无级变速(模拟8挡)"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "CVT无级变速(模拟8挡)"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "7挡双离合"
+}
+]
+},
+{
+bold: 0,
+id: 58,
+name: "挡位个数",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "8"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "8"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "8"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "8"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "7"
+}
+]
+},
+{
+bold: 0,
+id: 59,
+name: "变速箱类型",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "无级变速箱(CVT)"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "无级变速箱(CVT)"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "无级变速箱(CVT)"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "无级变速箱(CVT)"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "双离合变速箱(DCT)"
+}
+]
+}
+],
+name: "变速箱"
+},
+{
+id: 60,
+items: [
+{
+bold: 0,
+id: 61,
+name: "驱动方式",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "前置前驱"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "前置前驱"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "前置前驱"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "前置前驱"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "前置四驱"
+}
+]
+},
+{
+bold: 0,
+id: 197,
+name: "四驱形式",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "全时四驱"
+}
+]
+},
+{
+bold: 0,
+id: 198,
+name: "中央差速器结构",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "托森式差速器"
+}
+]
+},
+{
+bold: 0,
+id: 62,
+name: "前悬架类型",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "五连杆式独立悬架"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "五连杆式独立悬架"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "五连杆式独立悬架"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "五连杆式独立悬架"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "五连杆式独立悬架"
+}
+]
+},
+{
+bold: 0,
+id: 63,
+name: "后悬架类型",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "梯形连杆式独立悬架"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "梯形连杆式独立悬架"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "梯形连杆式独立悬架"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "梯形连杆式独立悬架"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "梯形连杆式独立悬架"
+}
+]
+},
+{
+bold: 0,
+id: 64,
+name: "助力类型",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "电动助力"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "电动助力"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "电动助力"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "电动助力"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "电动助力"
+}
+]
+},
+{
+bold: 0,
+id: 65,
+name: "车体结构",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "承载式"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "承载式"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "承载式"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "承载式"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "承载式"
+}
+]
+}
+],
+name: "底盘转向"
+},
+{
+id: 66,
+items: [
+{
+bold: 0,
+id: 67,
+name: "前制动器类型",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "通风盘式"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "通风盘式"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "通风盘式"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "通风盘式"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "通风盘式"
+}
+]
+},
+{
+bold: 0,
+id: 68,
+name: "后制动器类型",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "盘式"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "盘式"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "盘式"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "盘式"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "盘式"
+}
+]
+},
+{
+bold: 0,
+id: 69,
+name: "驻车制动类型",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "电子驻车"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "电子驻车"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "电子驻车"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "电子驻车"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "电子驻车"
+}
+]
+},
+{
+bold: 0,
+id: 70,
+name: "前轮胎规格",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "225/55 R16"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "225/50 R17"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "225/50 R17"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "245/40 R18"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "245/40 R18"
+}
+]
+},
+{
+bold: 0,
+id: 71,
+name: "后轮胎规格",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "225/55 R16"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "225/50 R17"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "225/50 R17"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "245/40 R18"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "245/40 R18"
+}
+]
+},
+{
+bold: 0,
+id: 72,
+name: "备胎规格",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "非全尺寸"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "非全尺寸"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "非全尺寸"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "非全尺寸"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "非全尺寸"
+}
+]
+}
+],
+name: "车轮制动"
+},
+{
+id: 73,
+items: [
+{
+bold: 0,
+id: 74,
+name: "主/副驾驶座安全气囊",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "主● / 副●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "主● / 副●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "主● / 副●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "主● / 副●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "主● / 副●"
+}
+]
+},
+{
+bold: 0,
+id: 75,
+name: "前/后排侧气囊",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "前● / 后○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "前● / 后○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "前● / 后○"
+}
+]
+},
+{
+bold: 0,
+id: 76,
+name: "前/后排头部气囊(气帘)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "前● / 后●"
+}
+]
+},
+{
+bold: 0,
+id: 77,
+name: "膝部气囊",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 78,
+name: "胎压监测装置",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 79,
+name: "零胎压继续行驶",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 80,
+name: "安全带未系提示",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 81,
+name: "ISOFIX儿童座椅接口",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 82,
+name: "发动机电子防盗",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 83,
+name: "车内中控锁",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 84,
+name: "遥控钥匙",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 85,
+name: "无钥匙启动系统",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "○"
+}
+]
+},
+{
+bold: 0,
+id: 86,
+name: "无钥匙进入系统",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "○"
+}
+]
+}
+],
+name: "安全装备"
+},
+{
+id: 87,
+items: [
+{
+bold: 0,
+id: 88,
+name: "ABS防抱死",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 89,
+name: "制动力分配(EBD/CBC等)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 90,
+name: "刹车辅助(EBA/BAS/BA等)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 91,
+name: "牵引力控制(ASR/TCS/TRC等)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 92,
+name: "车身稳定控制(ESC/ESP/DSC等)",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 93,
+name: "上坡辅助",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 94,
+name: "自动驻车",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 95,
+name: "陡坡缓降",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 96,
+name: "可变悬架",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 97,
+name: "空气悬架",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 98,
+name: "可变转向比",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "○"
+}
+]
+},
+{
+bold: 0,
+id: 99,
+name: "前桥限滑差速器/差速锁",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 100,
+name: "中央差速器锁止功能",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 101,
+name: "后桥限滑差速器/差速锁",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+}
+],
+name: "操控配置"
+},
+{
+id: 102,
+items: [
+{
+bold: 0,
+id: 103,
+name: "电动天窗",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 104,
+name: "全景天窗",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 105,
+name: "运动外观套件",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 106,
+name: "铝合金轮圈",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 107,
+name: "电动吸合门",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 108,
+name: "侧滑门",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 109,
+name: "电动后备厢",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: null,
+id: 258,
+name: "感应后备厢",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: null,
+id: 259,
+name: "车顶行李架",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+}
+],
+name: "外部配置"
+},
+{
+id: 110,
+items: [
+{
+bold: 0,
+id: 111,
+name: "真皮方向盘",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 112,
+name: "方向盘调节",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "上下+前后调节"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "上下+前后调节"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "上下+前后调节"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "上下+前后调节"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "上下+前后调节"
+}
+]
+},
+{
+bold: 0,
+id: 113,
+name: "方向盘电动调节",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 114,
+name: "多功能方向盘",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 115,
+name: "方向盘换挡",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "○"
+}
+]
+},
+{
+bold: 0,
+id: 116,
+name: "方向盘加热",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: null,
+id: 260,
+name: "方向盘记忆",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 117,
+name: "定速巡航",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 118,
+name: "前/后驻车雷达",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "前○ / 后●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "前● / 后●"
+}
+]
+},
+{
+bold: 0,
+id: 119,
+name: "倒车视频影像",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "○"
+}
+]
+},
+{
+bold: 0,
+id: 120,
+name: "行车电脑显示屏",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: null,
+id: 261,
+name: "全液晶仪表盘",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 121,
+name: "HUD抬头数字显示",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+}
+],
+name: "内部配置"
+},
+{
+id: 122,
+items: [
+{
+bold: null,
+id: 262,
+name: "座椅材质",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "织物(选装真皮)"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "织物(选装真皮)"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "真皮"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "真皮"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "织物(选装真皮)"
+}
+]
+},
+{
+bold: 0,
+id: 124,
+name: "运动风格座椅",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "○"
+}
+]
+},
+{
+bold: 0,
+id: 125,
+name: "座椅高低调节",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 126,
+name: "腰部支撑调节",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 127,
+name: "肩部支撑调节",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 128,
+name: "主/副驾驶座电动调节",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "主● / 副●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "主● / 副●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "主● / 副●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "主● / 副●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "主● / 副●"
+}
+]
+},
+{
+bold: 0,
+id: 129,
+name: "第二排靠背角度调节",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 130,
+name: "第二排座椅移动",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 131,
+name: "后排座椅电动调节",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 132,
+name: "电动座椅记忆",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "○"
+}
+]
+},
+{
+bold: 0,
+id: 133,
+name: "前/后排座椅加热",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "前○ / 后○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "前○ / 后○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "前● / 后○"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "前● / 后○"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "前○ / 后○"
+}
+]
+},
+{
+bold: 0,
+id: 134,
+name: "前/后排座椅通风",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "前○ / 后-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "前○ / 后-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "前○ / 后-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "前○ / 后-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "前○ / 后-"
+}
+]
+},
+{
+bold: 0,
+id: 135,
+name: "前/后排座椅按摩",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 137,
+name: "第三排座椅",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 136,
+name: "后排座椅放倒方式",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "比例放倒"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "比例放倒"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "比例放倒"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "比例放倒"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "比例放倒"
+}
+]
+},
+{
+bold: 0,
+id: 138,
+name: "前/后中央扶手",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "前● / 后●"
+}
+]
+},
+{
+bold: 0,
+id: 139,
+name: "后排杯架",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+}
+],
+name: "座椅配置"
+},
+{
+id: 140,
+items: [
+{
+bold: 0,
+id: 141,
+name: "GPS导航系统",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "○"
+}
+]
+},
+{
+bold: 0,
+id: 142,
+name: "定位互动服务",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 143,
+name: "中控台彩色大屏",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 145,
+name: "蓝牙/车载电话",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 146,
+name: "车载电视",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "○"
+}
+]
+},
+{
+bold: 0,
+id: 147,
+name: "后排液晶屏",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: null,
+id: 263,
+name: "220V/230V电源",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: null,
+id: 264,
+name: "外接音源接口",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "AUX"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "AUX"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "AUX"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "AUX"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "AUX"
+}
+]
+},
+{
+bold: 0,
+id: 149,
+name: "CD支持MP3/WMA",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 150,
+name: "多媒体系统",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "多碟CD(选装单碟DVD)"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "多碟CD(选装单碟DVD)"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "多碟CD(选装单碟DVD)"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "多碟CD + 单碟DVD"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "多碟CD(选装单碟DVD)"
+}
+]
+},
+{
+bold: 0,
+id: 151,
+name: "扬声器品牌",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "(选装Bang & Olufsen)"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "(选装Bang & Olufsen)"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "(选装Bang & Olufsen)"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "Bang & Olufsen"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "Bang & Olufsen"
+}
+]
+},
+{
+bold: 0,
+id: 152,
+name: "扬声器数量",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "10-11喇叭(选装≥12喇叭)"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "10-11喇叭(选装≥12喇叭)"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "10-11喇叭(选装≥12喇叭)"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "≥12喇叭"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "≥12喇叭"
+}
+]
+}
+],
+name: "多媒体配置"
+},
+{
+id: 153,
+items: [
+{
+bold: null,
+id: 265,
+name: "近光灯",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "氙气"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "氙气"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "氙气"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "氙气"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "氙气"
+}
+]
+},
+{
+bold: null,
+id: 266,
+name: "远光灯",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "氙气"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "氙气"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "氙气"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "氙气"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "氙气"
+}
+]
+},
+{
+bold: 0,
+id: 156,
+name: "日间行车灯",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: null,
+id: 267,
+name: "自适应远近光",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 157,
+name: "自动头灯",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 158,
+name: "转向辅助灯",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 159,
+name: "转向头灯",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "○"
+}
+]
+},
+{
+bold: 0,
+id: 160,
+name: "前雾灯",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 161,
+name: "大灯高度可调",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 162,
+name: "大灯清洗装置",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 163,
+name: "车内氛围灯",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+}
+],
+name: "灯光配置"
+},
+{
+id: 164,
+items: [
+{
+bold: 0,
+id: 165,
+name: "前/后电动车窗",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "前● / 后●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "前● / 后●"
+}
+]
+},
+{
+bold: 0,
+id: 166,
+name: "车窗防夹手功能",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 167,
+name: "防紫外线/隔热玻璃",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 168,
+name: "后视镜电动调节",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 169,
+name: "后视镜加热",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 170,
+name: "内/外后视镜自动防眩目",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "内● / 外○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "内● / 外○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "内● / 外○"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "内● / 外●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "内● / 外○"
+}
+]
+},
+{
+bold: 0,
+id: 171,
+name: "后视镜电动折叠",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 172,
+name: "后视镜记忆",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "○"
+}
+]
+},
+{
+bold: 0,
+id: 173,
+name: "后风挡遮阳帘",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "○"
+}
+]
+},
+{
+bold: 0,
+id: 174,
+name: "后排侧遮阳帘",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "○"
+}
+]
+},
+{
+bold: 0,
+id: 175,
+name: "后排侧隐私玻璃",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 176,
+name: "遮阳板化妆镜",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 177,
+name: "后雨刷",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 178,
+name: "感应雨刷",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+}
+],
+name: "玻璃/后视镜"
+},
+{
+id: 179,
+items: [
+{
+bold: 0,
+id: 180,
+name: "空调控制方式",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "自动●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "自动●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "自动●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "自动●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "自动●"
+}
+]
+},
+{
+bold: 0,
+id: 181,
+name: "后排独立空调",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 182,
+name: "后座出风口",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 183,
+name: "温度分区控制",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 184,
+name: "车内空气调节/花粉过滤",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 185,
+name: "车载冰箱",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+}
+],
+name: "空调/冰箱"
+},
+{
+id: 186,
+items: [
+{
+bold: 0,
+id: 187,
+name: "自动泊车入位",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 188,
+name: "发动机启停技术",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "●"
+}
+]
+},
+{
+bold: 0,
+id: 189,
+name: "并线辅助",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "●"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "○"
+}
+]
+},
+{
+bold: 0,
+id: 190,
+name: "车道偏离预警系统",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "○"
+}
+]
+},
+{
+bold: 0,
+id: 191,
+name: "主动刹车/主动安全系统",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 192,
+name: "整体主动转向系统",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 193,
+name: "夜视系统",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 194,
+name: "中控液晶屏分屏显示",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+},
+{
+bold: 0,
+id: 195,
+name: "自适应巡航",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "○"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "○"
+}
+]
+},
+{
+bold: 0,
+id: 196,
+name: "全景摄像头",
+values: [
+{
+carId: 24053,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24054,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24061,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24056,
+showCompeteWord: false,
+value: "-"
+},
+{
+carId: 24057,
+showCompeteWord: false,
+value: "-"
+}
+]
+}
+],
+name: "高科技配置"
+}
+]
+},
+errorCode: 0,
+message: null,
+requestId: "1465722255393291587566",
+searchTime: 0,
+success: true
+}
