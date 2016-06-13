@@ -74,7 +74,6 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
         if ( rowIndexMapRowIndexInSectionArray == null ){
             rowIndexMapRowIndexInSectionArray = new SparseArray<>();
         }
-
         if ( sectionTitlePositionsSet == null ){
             sectionTitlePositionsSet = new BitSet();
         }
