@@ -118,7 +118,7 @@ public class McPropertiesView extends ViewGroup{
         scrollY = 0;
         firstSection = 0;
         firstColumn = 0;
-        firstRow = 0;
+        firstRow = 1;
 
         realRowCount = 0;
         rowHeightsAsignIndex = 0;
@@ -342,19 +342,19 @@ public class McPropertiesView extends ViewGroup{
         if ( scrollY == 0 ){
 
         } else if ( scrollY > 0 ){
-            while ( rowHeights[firstRow + 1] < scrollY ){
+            while ( rowHeights[firstRow] < scrollY ){
                 if ( !cellTitleViews.isEmpty() || !sectionTitleViews.isEmpty() ){
                     removeTop();
                 }
-                scrollY -= rowHeights[firstRow +1];
+                scrollY -= rowHeights[firstRow];
                 firstRow++;
             }
-            while ( getFilledHeight() < height ){
+            while ( getFilledHeight(firstRow) < height ){
                 //todo 这里无限循环 需要调查
                 addBottom();
             }
         } else {
-            while (( !cellTitleViews.isEmpty() || !sectionTitleViews.isEmpty()) && getFilledHeight() - rowHeights[firstRow+cellTitleViews.size()+cellViews.size()] >= height ){
+            while (( !cellTitleViews.isEmpty() || !sectionTitleViews.isEmpty()) && getFilledHeight(firstRow) - rowHeights[firstRow+cellTitleViews.size()+cellViews.size()] >= height ){
                 removeBottom();
             }
 
@@ -363,7 +363,7 @@ public class McPropertiesView extends ViewGroup{
                     firstRow--;
                     scrollY += rowHeights[firstRow + 1];
                 }
-                while (getFilledHeight() < height) {
+                while (getFilledHeight(firstRow) < height) {
                     addBottom();
                 }
             } else {
@@ -501,17 +501,19 @@ public class McPropertiesView extends ViewGroup{
         int currentSection = adapter.getSectionIndex(firstRow);
         int addRowCount = cellTitleViews.size() + sectionTitleViews.size();
         int realRowIndex;
-        for ( int rowIndex = 0; rowIndex < firstRow + addRowCount; rowIndex++ ){
+        for ( int rowIndex = 0; rowIndex < firstRow + addRowCount -1; rowIndex++ ){
+            //todo firstRow = 4 或 356等会造成数组越界
             realRowIndex = firstRow + rowIndex;
             if ( adapter.isSectionTitle(realRowIndex) ){ //如果是sectionTitle 不做处理
 
             }else{ //cellView
                 int rowIndexInSection = adapter.getRowIndexInSection(realRowIndex);
-                List<View> viewList = cellViews.get(rowIndex);
-                View cellView = adapter.getCellView(currentSection,rowIndexInSection,column,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL),this);
-                addView(cellView,0);
-                viewList.add(index,cellView);
-                bindViewTags(cellView,McPropertyDataType.TYPE_PROPERTY_CELL,currentSection,realRowIndex,column);
+                for ( List<View> viewList : cellViews ){
+                    View cellView = adapter.getCellView(currentSection,rowIndexInSection,column,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL),this);
+                    addView(cellView,0);
+                    viewList.add(index,cellView);
+                    bindViewTags(cellView,McPropertyDataType.TYPE_PROPERTY_CELL,currentSection,realRowIndex,column);
+                }
             }
         }
     }
@@ -544,7 +546,7 @@ public class McPropertiesView extends ViewGroup{
      * 从最底下添加views
      */
     private void addBottom(){
-        lastRow = firstRow + cellTitleViews.size() + sectionTitleViews.size();
+        lastRow = firstRow + cellTitleViews.size() + sectionTitleViews.size() - 1;
         if ( adapter.isSectionTitle(lastRow+1) ){
             addSectionTitleTopAndBottom(lastRow+1,sectionTitleViews.size());
         }else{
@@ -557,8 +559,10 @@ public class McPropertiesView extends ViewGroup{
      */
     private void addTop(){
         if ( adapter.isSectionTitle( firstRow -1 ) ){
+            //todo -1的时候需要处理
             addSectionTitleTopAndBottom(firstRow-1,0);
         }else{
+            //todo -1的时候需要处理
             addCellTopAndBottom(firstRow-1,0);
         }
     }
@@ -575,8 +579,8 @@ public class McPropertiesView extends ViewGroup{
      * 得到已经填充的高度
      * @return
      */
-    private int getFilledHeight() {
-        return rowHeights[0] + getArraySum(rowHeights,firstRow+1,firstRow+cellTitleViews.size()+sectionTitleViews.size()) - scrollY;
+    private int getFilledHeight(int start) {
+        return rowHeights[0] + getArraySum(rowHeights,start,start+cellTitleViews.size()+sectionTitleViews.size()) - scrollY;
     }
 
     public int getActualScrollX() {
@@ -650,7 +654,7 @@ public class McPropertiesView extends ViewGroup{
             /**
              * layout title
              */
-            top = rowHeights[0] - ( (scrollY - getArraySum(rowHeights,firstRow)) % rowHeights[firstRow] );
+            top = rowHeights[0] - scrollY % rowHeights[firstRow] ;
             for ( int rowIndex = firstRow; rowIndex < adapter.getTotalRowCount() && top < height; rowIndex++ ){
                 int sectionIndex = adapter.getSectionIndex(rowIndex);
                 if ( sectionIndex == -1 ){ //说明是 tableHeader
