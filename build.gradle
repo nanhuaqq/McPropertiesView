@@ -11,7 +11,7 @@ buildscript {
     }
     configurations.classpath.resolutionStrategy.cacheDynamicVersionsFor 10, 'seconds'
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.0'
+        classpath 'com.android.tools.build:gradle:2.1.2'
         classpath 'cn.mucang.simple.plugins:mucang-deploy:+'
         classpath 'nu.studer:gradle-credentials-plugin:1.0.1'
 
