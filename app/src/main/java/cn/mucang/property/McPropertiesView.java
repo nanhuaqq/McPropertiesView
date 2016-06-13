@@ -503,6 +503,7 @@ public class McPropertiesView extends ViewGroup{
         int realRowIndex;
         for ( int rowIndex = 0; rowIndex < firstRow + addRowCount -1; rowIndex++ ){
             //todo firstRow = 4 或 356等会造成数组越界
+
             realRowIndex = firstRow + rowIndex;
             if ( adapter.isSectionTitle(realRowIndex) ){ //如果是sectionTitle 不做处理
             }else{ //cellView
