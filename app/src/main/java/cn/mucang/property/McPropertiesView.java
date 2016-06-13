@@ -350,6 +350,7 @@ public class McPropertiesView extends ViewGroup{
                 firstRow++;
             }
             while ( getFilledHeight() < height ){
+                //todo 这里无限循环 需要调查
                 addBottom();
             }
         } else {
@@ -373,6 +374,54 @@ public class McPropertiesView extends ViewGroup{
                 }
             }
         }
+        repositionViews();
+    }
+
+    private void repositionViews(){
+        int left, top, right, bottom, i;
+        //HeaderView
+        left = cellWidth - scrollX % cellWidth;
+        for ( View headerView:headerViews){
+            right = left + cellWidth;
+            headerView.layout(left,0,right,rowHeights[0]);
+            left = right;
+        }
+
+        /**
+         * layout title
+         */
+        top = rowHeights[firstRow] - scrollY;
+        int rowCount = cellTitleViews.size() + sectionTitleViews.size();
+        int sectionPosition = 0;
+        int cellPosition = 0;
+        for ( int rowIndexx = 0; rowIndexx < rowCount; rowIndexx++ ){
+            int realRowIndex = firstRow + rowIndexx;
+            int sectionIndex = adapter.getSectionIndex(realRowIndex);
+            if ( sectionIndex == -1 ){ //说明是 tableHeader
+                continue;
+            }
+            bottom = top + rowHeights[realRowIndex];
+            if ( adapter.isSectionTitle(realRowIndex) ){ //如果是sectionTitle
+                View sectionTitleView = sectionTitleViews.get(sectionPosition);
+                sectionTitleView.layout(0,top,width,bottom);
+                sectionPosition++;
+            }else{ //cellTitle
+                View cellTitleView = cellTitleViews.get(cellPosition);
+                cellTitleView.layout(0,top,cellWidth,bottom);
+
+                // layout cellView
+                left = cellWidth - scrollX % cellWidth;
+                List<View> viewList = cellViews.get(cellPosition);
+                for ( View cellView : viewList ){
+                    right = left + cellWidth;
+                    cellView.layout(left,top,right,bottom);
+                    left = right;
+                }
+                cellPosition ++;
+            }
+            top = bottom;
+        }
+        invalidate();
     }
 
     private void removeLeftOrRight(int position) {
