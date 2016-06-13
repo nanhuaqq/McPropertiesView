@@ -505,7 +505,6 @@ public class McPropertiesView extends ViewGroup{
             //todo firstRow = 4 或 356等会造成数组越界
             realRowIndex = firstRow + rowIndex;
             if ( adapter.isSectionTitle(realRowIndex) ){ //如果是sectionTitle 不做处理
-
             }else{ //cellView
                 int rowIndexInSection = adapter.getRowIndexInSection(realRowIndex);
                 for ( List<View> viewList : cellViews ){
