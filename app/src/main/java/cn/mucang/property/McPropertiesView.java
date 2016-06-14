@@ -2,6 +2,7 @@ package cn.mucang.property;
 
 import android.content.Context;
 import android.database.DataSetObserver;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -84,6 +85,12 @@ public class McPropertiesView extends ViewGroup{
      * 是否通过measure得到每行的高度
      */
     private boolean isRowHeightsInited = false;
+
+    /**
+     * sticky借鉴stickyScroll的做法 一个currentStickView一个approachingView
+     */
+    private View currentHeader;
+    private float headerOffset;
 
     public McPropertiesView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -494,6 +501,10 @@ public class McPropertiesView extends ViewGroup{
                 }
                 View sectionTitleView = sectionTitleViews.get(sectionPosition);
                 sectionTitleView.layout(0,top,width,bottom);
+                currentHeader = sectionTitleView;
+                if ( currentHeader != null ){
+                    headerOffset = currentHeader.getTop() - currentHeader.getHeight();
+                }
                 sectionPosition++;
             }else{ //cellTitle // TODO: 2016/6/14 空指针
                 if ( cellPosition >= cellTitleViews.size() ){
@@ -515,6 +526,22 @@ public class McPropertiesView extends ViewGroup{
             top = bottom;
         }
         invalidate();
+    }
+
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
+        if (adapter == null || currentHeader == null)
+            return;
+
+        int saveCount = canvas.save();
+        canvas.translate(0, rowHeights[0]);
+        canvas.clipRect(0, 0, getWidth(), currentHeader.getMeasuredHeight()); // needed
+        // for
+        // <
+        // HONEYCOMB
+        currentHeader.draw(canvas);
+        canvas.restoreToCount(saveCount);
     }
 
     private void removeLeftOrRight(int position) {
