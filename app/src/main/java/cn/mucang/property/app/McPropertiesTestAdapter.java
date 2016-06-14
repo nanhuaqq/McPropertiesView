@@ -87,7 +87,7 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
             for ( int sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++ ){
                 int rowCountInThisSection = getRowCount(sectionIndex);
                 int endRowIndex = totalRowCount + (rowCountInThisSection + 1);
-                int rowIndexInSection = 0;
+                int rowIndexInSection = -1;
                 for ( int startRowIndex = totalRowCount; startRowIndex < endRowIndex; startRowIndex++,rowIndexInSection ++ ){
                     rowIndexMapSectionArray.put(startRowIndex,sectionIndex);
                     rowIndexMapRowIndexInSectionArray.put(startRowIndex,rowIndexInSection);
@@ -128,6 +128,7 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
     @Override
     public View getCellView(int section, int row, int column, View convertView, ViewGroup parent) {
         TextView tvCellView = null;
+
         if ( convertView == null ){
             convertView = inflater.inflate(R.layout.table_cell_view,parent,false);
         }
