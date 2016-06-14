@@ -368,7 +368,7 @@ public class McPropertiesView extends ViewGroup{
                 deltaScrollY = scrollY - getArraySum(rowHeights,1,firstRow);
             }
         } else {
-            while (( !cellTitleViews.isEmpty() || !sectionTitleViews.isEmpty()) && getFilledHeight(firstRow,deltaScrollY) - rowHeights[firstRow+cellTitleViews.size()+cellViews.size()] >= height ){
+            while (( !cellTitleViews.isEmpty() || !sectionTitleViews.isEmpty()) && getFilledHeight(firstRow,deltaScrollY) - rowHeights[firstRow+cellTitleViews.size()+sectionTitleViews.size()-1] >= height ){
                 removeBottom();
             }
             while ( deltaScrollY < 0 ){
@@ -405,7 +405,8 @@ public class McPropertiesView extends ViewGroup{
         /**
          * layout title
          */
-        top = rowHeights[firstRow] - scrollY;
+        int deltaScrollY = scrollY - getArraySum(rowHeights,1,firstRow);
+        top = rowHeights[firstRow] - deltaScrollY;
         int rowCount = cellTitleViews.size() + sectionTitleViews.size();
         int sectionPosition = 0;
         int cellPosition = 0;
@@ -420,7 +421,10 @@ public class McPropertiesView extends ViewGroup{
                 View sectionTitleView = sectionTitleViews.get(sectionPosition);
                 sectionTitleView.layout(0,top,width,bottom);
                 sectionPosition++;
-            }else{ //cellTitle
+            }else{ //cellTitle // TODO: 2016/6/14 空指针
+                if ( cellPosition >= cellTitleViews.size() ){
+                    continue;
+                }
                 View cellTitleView = cellTitleViews.get(cellPosition);
                 cellTitleView.layout(0,top,cellWidth,bottom);
 
@@ -534,6 +538,9 @@ public class McPropertiesView extends ViewGroup{
             }
             if ( adapter.isSectionTitle(realRowIndex) ){ //如果是sectionTitle 不做处理
             }else{ //cellView
+                if ( cellPostion >= cellViews.size() ){
+                    continue;
+                }
                 int rowIndexInSection = adapter.getRowIndexInSection(realRowIndex);
                 List<View> viewList = cellViews.get(cellPostion);
                 View cellView = adapter.getCellView(currentSection,rowIndexInSection,column,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL),this);
