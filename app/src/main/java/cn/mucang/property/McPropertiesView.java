@@ -3,6 +3,7 @@ package cn.mucang.property;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -295,6 +296,33 @@ public class McPropertiesView extends ViewGroup{
         return true;
     }
 
+    private void scrollBounds() {
+        scrollX = scrollBoundsX(scrollX);
+        scrollY = scrollBoundsY(scrollY);
+    }
+
+    private int scrollBoundsX(int desiredScroll) {
+        if (desiredScroll == 0) {
+            // no op
+        } else if (desiredScroll < 0) {
+            desiredScroll = Math.max(desiredScroll, - cellWidth * firstColumn );
+        } else {
+            desiredScroll = Math.min(desiredScroll, Math.max(0, (adapter.getColumnCount() - firstColumn ) * cellWidth - width));
+        }
+        return desiredScroll;
+    }
+
+    private int scrollBoundsY(int desiredScroll){
+        if ( desiredScroll == 0 ){
+            //no op
+        } else if ( desiredScroll < 0 ){
+            desiredScroll = Math.max(desiredScroll,-rowHeights[firstRow]);
+        } else {
+            desiredScroll = Math.min(desiredScroll,Math.max(0,getArraySum(rowHeights,firstRow,adapter.getColumnCount())+rowHeights[0]-height));
+        }
+        return desiredScroll;
+    }
+
     @Override
     public void scrollBy(int x, int y) {
         scrollX += x;
@@ -304,6 +332,8 @@ public class McPropertiesView extends ViewGroup{
         if ( needRelayout ){
             return;
         }
+
+        scrollBounds();
 
         if ( scrollX == 0 ){
             // 不做任何操作
@@ -350,7 +380,6 @@ public class McPropertiesView extends ViewGroup{
                 firstRow++;
             }
             while ( getFilledHeight(firstRow) < height ){
-                //todo 这里无限循环 需要调查
                 addBottom();
             }
         } else {
@@ -361,7 +390,8 @@ public class McPropertiesView extends ViewGroup{
             if ( cellTitleViews.isEmpty() && sectionTitleViews.isEmpty() ){
                 while (scrollY < 0) {
                     firstRow--;
-                    scrollY += rowHeights[firstRow + 1];
+                    firstRow = Math.max(1,firstRow);
+                    scrollY += rowHeights[firstRow];
                 }
                 while (getFilledHeight(firstRow) < height) {
                     addBottom();
@@ -369,8 +399,9 @@ public class McPropertiesView extends ViewGroup{
             } else {
                 while (0 > scrollY) {
                     addTop();
+                    firstRow = Math.max(1,firstRow);
                     firstRow--;
-                    scrollY += rowHeights[firstRow + 1];
+                    scrollY += rowHeights[firstRow];
                 }
             }
         }
@@ -488,6 +519,7 @@ public class McPropertiesView extends ViewGroup{
     private void addRight(){
         final int size = headerViews.size();
         addLeftOrRight(firstColumn+size,size);
+        addHeaderLeftOrRight(firstColumn+size,size);
     }
 
     /**
@@ -495,26 +527,44 @@ public class McPropertiesView extends ViewGroup{
      */
     private void addLeft(){
         addLeftOrRight(firstColumn-1,0);
+        addHeaderLeftOrRight(firstColumn-1,0);
+    }
+
+    private void addHeaderLeftOrRight(int column,int index){
+        View headerView = adapter.getTableHeaderView(column,recycler.getRecycledView(McPropertyDataType.TYPE_GROUP_TITLE),this);
+        addView(headerView,0);
+        headerViews.add(index,headerView);
+        bindViewTags(headerView,McPropertyDataType.TYPE_GROUP_TITLE,-1,0,column);
     }
 
     private void addLeftOrRight(int column,int index){
         int currentSection = adapter.getSectionIndex(firstRow);
         int addRowCount = cellTitleViews.size() + sectionTitleViews.size();
         int realRowIndex;
-        for ( int rowIndex = 0; rowIndex < firstRow + addRowCount -1; rowIndex++ ){
+        int cellPostion = 0;
+        for ( int rowIndex = 0; rowIndex <  addRowCount; rowIndex++ ){
             //todo firstRow = 4 或 356等会造成数组越界
             realRowIndex = firstRow + rowIndex;
             if ( adapter.isSectionTitle(realRowIndex) ){ //如果是sectionTitle 不做处理
             }else{ //cellView
                 int rowIndexInSection = adapter.getRowIndexInSection(realRowIndex);
-                for ( List<View> viewList : cellViews ){
-                    View cellView = adapter.getCellView(currentSection,rowIndexInSection,column,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL),this);
-                    addView(cellView,0);
-                    viewList.add(index,cellView);
-                    bindViewTags(cellView,McPropertyDataType.TYPE_PROPERTY_CELL,currentSection,realRowIndex,column);
-                }
+                List<View> viewList = cellViews.get(cellPostion);
+                View cellView = adapter.getCellView(currentSection,rowIndexInSection,column,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL),this);
+                addView(cellView,0);
+                viewList.add(index,cellView);
+                bindViewTags(cellView,McPropertyDataType.TYPE_PROPERTY_CELL,currentSection,realRowIndex,column);
+                cellPostion++;
             }
         }
+    }
+
+    private void addCellTitleTopAndBottom(int rowIndex,int index){
+        int sectionIndex = adapter.getSectionIndex(rowIndex);
+        int rowIndexInSection = adapter.getRowIndexInSection(rowIndex);
+        View cellTitleView = adapter.getCellTitleView(sectionIndex,rowIndexInSection,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_TITLE),this);
+        addView(cellTitleView,0);
+        cellTitleViews.add(index,cellTitleView);
+        bindViewTags(cellTitleView,McPropertyDataType.TYPE_PROPERTY_TITLE,sectionIndex,rowIndex,-1);
     }
 
     private void addCellTopAndBottom(int rowIndex, int index) {
@@ -550,6 +600,7 @@ public class McPropertiesView extends ViewGroup{
             addSectionTitleTopAndBottom(lastRow+1,sectionTitleViews.size());
         }else{
             addCellTopAndBottom(lastRow+1,cellTitleViews.size());
+            addCellTitleTopAndBottom(lastRow+1,cellTitleViews.size());
         }
     }
 
@@ -557,12 +608,16 @@ public class McPropertiesView extends ViewGroup{
      * 从最顶添加views
      */
     private void addTop(){
+        if ( firstRow < 2 ){
+            return;
+        }
         if ( adapter.isSectionTitle( firstRow -1 ) ){
             //todo -1的时候需要处理
             addSectionTitleTopAndBottom(firstRow-1,0);
         }else{
             //todo -1的时候需要处理
             addCellTopAndBottom(firstRow-1,0);
+            addCellTitleTopAndBottom(firstRow-1,0);
         }
     }
 
@@ -696,6 +751,8 @@ public class McPropertiesView extends ViewGroup{
     @Override
     public void removeView(View view) {
         super.removeView(view);
+        final int viewType = (Integer) view.getTag(R.id.tag_view_type);
+        recycler.addRecycledView(view,viewType);
     }
 
     /**
