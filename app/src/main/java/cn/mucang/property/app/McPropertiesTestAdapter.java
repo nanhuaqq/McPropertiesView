@@ -178,9 +178,10 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
     public View getSectionHeaderView(int section, View convertView, ViewGroup parent) {
         TextView tvSectionHeaderView = null;
         if ( convertView == null ){
-            convertView = inflater.inflate(R.layout.table_cell_view,parent,false);
+            convertView = inflater.inflate(R.layout.section_title_view,parent,false);
         }
         tvSectionHeaderView = (TextView) convertView;
+        tvSectionHeaderView.setBackgroundResource(R.color.colorSectionBg);
         try {
             StringBuilder sb = new StringBuilder();
             sb.append("(").append("section"+section).append(")");

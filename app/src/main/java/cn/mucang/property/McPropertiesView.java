@@ -489,6 +489,9 @@ public class McPropertiesView extends ViewGroup{
             }
             bottom = top + rowHeights[realRowIndex];
             if ( adapter.isSectionTitle(realRowIndex) ){ //如果是sectionTitle
+                if ( sectionTitleViews.isEmpty() || sectionPosition >= sectionTitleViews.size() ){
+                    continue;
+                }
                 View sectionTitleView = sectionTitleViews.get(sectionPosition);
                 sectionTitleView.layout(0,top,width,bottom);
                 sectionPosition++;
@@ -515,9 +518,13 @@ public class McPropertiesView extends ViewGroup{
     }
 
     private void removeLeftOrRight(int position) {
-        removeView(headerViews.remove(position));
+        if ( position < headerViews.size() ){
+            removeView(headerViews.remove(position));
+        }
         for (List<View> list : cellViews) {
-            removeView(list.remove(position));
+            if ( position < list.size() ){
+                removeView(list.remove(position));
+            }
         }
     }
 
@@ -596,7 +603,7 @@ public class McPropertiesView extends ViewGroup{
     }
 
     private void addHeaderLeftOrRight(int column,int index){
-        View headerView = adapter.getTableHeaderView(column,recycler.getRecycledView(McPropertyDataType.TYPE_GROUP_TITLE),this);
+        View headerView = adapter.getTableHeaderView(column,recycler.getRecycledView(McPropertyDataType.TYPE_CAR_HEADER),this);
         addView(headerView);
         headerViews.add(index,headerView);
         bindViewTags(headerView,McPropertyDataType.TYPE_GROUP_TITLE,-1,0,column);
@@ -819,6 +826,7 @@ public class McPropertiesView extends ViewGroup{
                 }
                 top = bottom;
             }
+            Log.e("qinqun","test");
         }
     }
 
@@ -826,7 +834,10 @@ public class McPropertiesView extends ViewGroup{
     public void removeView(View view) {
         super.removeView(view);
         final int viewType = (Integer) view.getTag(R.id.tag_view_type);
-        recycler.addRecycledView(view,viewType);
+        if ( viewType != 0 ){
+            recycler.addRecycledView(view,viewType);
+            Log.e("qinqun","test");
+        }
     }
 
     /**
