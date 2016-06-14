@@ -316,6 +316,80 @@ public class McPropertiesView extends ViewGroup{
         return desiredScroll;
     }
 
+    private int getHeaderBottom(){
+        int headerBottom;
+        headerBottom = leftCornerView.getBottom();
+        return headerBottom;
+    }
+
+    private int calculateFirstRowBottom(){
+        int firstRowBottom;
+        if ( adapter.isSectionTitle(firstRow) && !sectionTitleViews.isEmpty() ){
+            View sectionTitleView = sectionTitleViews.get(0);
+            firstRowBottom = sectionTitleView.getBottom();
+        }else {
+            View cellTitleView = cellTitleViews.get(0);
+            firstRowBottom = cellTitleView.getBottom();
+        }
+        return  firstRowBottom;
+    }
+
+    private int calculateFirstRowTop(){
+        int firstRowTop;
+        if ( adapter.isSectionTitle(firstRow) && !sectionTitleViews.isEmpty() ){
+            View sectionTitleView = sectionTitleViews.get(0);
+            firstRowTop = sectionTitleView.getTop();
+        }else {
+            View cellTitleView = cellTitleViews.get(0);
+            firstRowTop = cellTitleView.getTop();
+        }
+        return  firstRowTop;
+    }
+
+    private int calculateLastRowTop(){
+        View sectionTitleView,cellTitleView;
+        int sectionViewRowIndex = 0,cellTitleViewRowIndex = 0;
+        int sectionViewTop = 0,cellTitleViewTop = 0;
+        if ( sectionTitleViews.size() >= 1 ){
+            sectionTitleView = sectionTitleViews.get(sectionTitleViews.size()-1);
+            if ( sectionTitleView != null ){
+                sectionViewRowIndex = (Integer) sectionTitleView.getTag(R.id.tag_row);
+                sectionViewTop = sectionTitleView.getTop();
+            }
+        }
+        if ( cellTitleViews.size() >= 1 ){
+            cellTitleView = cellTitleViews.get(cellTitleViews.size() -1);
+            if ( cellTitleView != null ){
+                cellTitleViewRowIndex = (Integer)cellTitleView.getTag(R.id.tag_row);
+                cellTitleViewTop = cellTitleView.getTop();
+            }
+        }
+
+        return sectionViewRowIndex > cellTitleViewRowIndex ? sectionViewTop : cellTitleViewTop;
+    }
+
+    private int calculateLastRowBottom(){
+        View sectionTitleView,cellTitleView;
+        int sectionViewRowIndex = 0,cellTitleViewRowIndex = 0;
+        int sectionViewBottom = 0,cellTitleViewBottom = 0;
+        if ( sectionTitleViews.size() >= 1 ){
+            sectionTitleView = sectionTitleViews.get(sectionTitleViews.size()-1);
+            if ( sectionTitleView != null ){
+                sectionViewRowIndex = (Integer) sectionTitleView.getTag(R.id.tag_row);
+                sectionViewBottom = sectionTitleView.getBottom();
+            }
+        }
+        if ( cellTitleViews.size() >= 1 ){
+            cellTitleView = cellTitleViews.get(cellTitleViews.size() -1);
+            if ( cellTitleView != null ){
+                cellTitleViewRowIndex = (Integer)cellTitleView.getTag(R.id.tag_row);
+                cellTitleViewBottom = cellTitleView.getBottom();
+            }
+        }
+
+        return sectionViewRowIndex > cellTitleViewRowIndex ? sectionViewBottom : cellTitleViewBottom;
+    }
+
     @Override
     public void scrollBy(int x, int y) {
         scrollX += x;
@@ -356,26 +430,23 @@ public class McPropertiesView extends ViewGroup{
         if ( y == 0 ){
 
         } else if ( y > 0 ){
-            while ( rowHeights[firstRow] < deltaScrollY ){
+            if ( calculateFirstRowBottom() < getHeaderBottom() ){
                 Log.e("qinqunc","remove=>");
                 removeTop();
                 firstRow++;
-                deltaScrollY = scrollY - getArraySum(rowHeights,1,firstRow);
             }
-            while ( getFilledHeight(firstRow,deltaScrollY) < height ){
+            if ( calculateLastRowBottom() < height ){
                 Log.e("qinqunc","add=>");
                 addBottom();
-                deltaScrollY = scrollY - getArraySum(rowHeights,1,firstRow);
             }
         } else {
-            while (( !cellTitleViews.isEmpty() || !sectionTitleViews.isEmpty()) && getFilledHeight(firstRow,deltaScrollY) - rowHeights[firstRow+cellTitleViews.size()+sectionTitleViews.size()-1] >= height ){
+            if ( calculateLastRowTop() > height ){
                 removeBottom();
             }
-            while ( deltaScrollY < 0 ){
+            if ( calculateFirstRowTop() > getHeaderBottom() ){
                 addTop();
                 firstRow = Math.max(1,firstRow);
                 firstRow--;
-                deltaScrollY = scrollY - getArraySum(rowHeights,1,firstRow);
             }
         }
 
@@ -481,8 +552,14 @@ public class McPropertiesView extends ViewGroup{
     private void removeBottom(){
         lastRow = firstRow + cellTitleViews.size() + sectionTitleViews.size();
         if ( adapter.isSectionTitle(lastRow) ){ // 如果是sectionTitle
+            if ( sectionTitleViews.isEmpty() ){
+                return;
+            }
             removeSectionTitleTopOrBottom(sectionTitleViews.size()-1);
         }else{
+            if ( cellTitleViews.isEmpty() ){
+                return;
+            }
             removeCellTitleAndCellTopOrBottom(cellTitleViews.size()-1);
         }
     }
@@ -590,6 +667,9 @@ public class McPropertiesView extends ViewGroup{
      */
     private void addBottom(){
         lastRow = firstRow + cellTitleViews.size() + sectionTitleViews.size() - 1;
+        if ( lastRow >= rowHeights.length - 1 ){
+            return;
+        }
         if ( adapter.isSectionTitle(lastRow+1) ){
             addSectionTitleTopAndBottom(lastRow+1,sectionTitleViews.size());
         }else{
