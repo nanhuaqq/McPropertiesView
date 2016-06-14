@@ -477,7 +477,7 @@ public class McPropertiesView extends ViewGroup{
          * layout title
          */
         int deltaScrollY = scrollY - getArraySum(rowHeights,1,firstRow);
-        top = rowHeights[firstRow] - deltaScrollY;
+        top = rowHeights[0] - deltaScrollY;
         int rowCount = cellTitleViews.size() + sectionTitleViews.size();
         int sectionPosition = 0;
         int cellPosition = 0;
