@@ -20,6 +20,9 @@ import cn.mucang.property.utils.DimUtils;
  * Created by nanhuaqq on 2016/5/12.
  */
 public class McPropertiesView extends ViewGroup{
+
+    View leftCornerView;
+
     private int currentX;
     private int currentY;
 
@@ -375,6 +378,10 @@ public class McPropertiesView extends ViewGroup{
                 deltaScrollY = scrollY - getArraySum(rowHeights,1,firstRow);
             }
         }
+
+        this.removeView(leftCornerView);
+        this.addView(leftCornerView);
+
         Log.e("qinqun","header size=>"+headerViews.size());
         Log.e("qinqun","view list size=>"+cellViews.size());
         repositionViews();
@@ -382,6 +389,11 @@ public class McPropertiesView extends ViewGroup{
 
     private void repositionViews(){
         int left, top, right, bottom, i;
+
+        //leftCornerView
+        leftCornerView.layout(0,0,cellWidth,rowHeights[0]);
+        bindViewTags(leftCornerView,McPropertyDataType.TYPE_SHOW_ALL_OR_DIFF,-1,0,0);
+
         //HeaderView
         left = cellWidth - scrollX % cellWidth;
         for ( View headerView:headerViews){
@@ -504,7 +516,7 @@ public class McPropertiesView extends ViewGroup{
 
     private void addHeaderLeftOrRight(int column,int index){
         View headerView = adapter.getTableHeaderView(column,recycler.getRecycledView(McPropertyDataType.TYPE_GROUP_TITLE),this);
-        addView(headerView,0);
+        addView(headerView);
         headerViews.add(index,headerView);
         bindViewTags(headerView,McPropertyDataType.TYPE_GROUP_TITLE,-1,0,column);
     }
@@ -537,7 +549,7 @@ public class McPropertiesView extends ViewGroup{
         int sectionIndex = adapter.getSectionIndex(rowIndex);
         int rowIndexInSection = adapter.getRowIndexInSection(rowIndex);
         View cellTitleView = adapter.getCellTitleView(sectionIndex,rowIndexInSection,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_TITLE),this);
-        addView(cellTitleView,0);
+        addView(cellTitleView);
         cellTitleViews.add(index,cellTitleView);
         bindViewTags(cellTitleView,McPropertyDataType.TYPE_PROPERTY_TITLE,sectionIndex,rowIndex,-1);
     }
@@ -663,7 +675,7 @@ public class McPropertiesView extends ViewGroup{
              * 首先layout tableHeaderView
              */
             //leftCornerView
-            View leftCornerView = adapter.getLeftCornerView(recycler.getRecycledView(McPropertyDataType.TYPE_SHOW_ALL_OR_DIFF),this);
+            leftCornerView = adapter.getLeftCornerView(recycler.getRecycledView(McPropertyDataType.TYPE_SHOW_ALL_OR_DIFF),this);
             leftCornerView.measure(MeasureSpec.makeMeasureSpec(cellWidth,MeasureSpec.EXACTLY),MeasureSpec.makeMeasureSpec(rowHeights[0],MeasureSpec.EXACTLY));
             addView(leftCornerView,0);
             leftCornerView.layout(0,0,cellWidth,rowHeights[0]);
