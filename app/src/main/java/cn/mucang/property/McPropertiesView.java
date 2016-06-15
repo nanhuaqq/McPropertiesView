@@ -72,6 +72,8 @@ public class McPropertiesView extends ViewGroup{
      * 真实的行数目 = 1（顶部） + section数目 + 多个section中行数和
      */
     int realRowCount;
+
+    int realColumnCount;
     /**
      * 每一行的高度
      */
@@ -149,6 +151,10 @@ public class McPropertiesView extends ViewGroup{
         firstRow = 1;
 
         realRowCount = adapter.getTotalRowCount();
+        realColumnCount = adapter.getColumnCount();
+        if ( isSupportExtraHeader ){
+            realColumnCount += 1;
+        }
         rowHeightsAsignIndex = 0;
 
         if ( rowHeights != null ){
@@ -185,16 +191,22 @@ public class McPropertiesView extends ViewGroup{
         isRowHeightsInited = true;
         //首先measure header
         int headerHeight = 0;
-        for (int i = -1; i < adapter.getColumnCount(); i++) {
+        for (int i = -1; i < realColumnCount; i++) {
 
             if ( i == -1 ){  // leftCornerView
                 final View leftCornerView = adapter.getLeftCornerView(recycler.getRecycledView(McPropertyDataType.TYPE_SHOW_ALL_OR_DIFF),this);
                 recycler.addRecycledView(leftCornerView,McPropertyDataType.TYPE_SHOW_ALL_OR_DIFF);
                 headerHeight = Math.max(headerHeight,onlyMeasureChild(leftCornerView));
             }else{   // tableTitleView
-                final View tableHeaderView = adapter.getTableHeaderView(i,recycler.getRecycledView(McPropertyDataType.TYPE_CAR_HEADER),this);
-                recycler.addRecycledView(tableHeaderView,McPropertyDataType.TYPE_CAR_HEADER);
-                headerHeight = Math.max(headerHeight,onlyMeasureChild(tableHeaderView));
+                if ( isSupportExtraHeader && i == realColumnCount -1 ){ //如果支持 额外的 header （最后一个）
+                    final View tableExtraHeaderView = adapter.getExtraTableHeaderView(i,recycler.getRecycledView(McPropertyDataType.TYPE_CAR_HEADER_EXTRA),this);
+                    recycler.addRecycledView(tableExtraHeaderView,McPropertyDataType.TYPE_CAR_HEADER_EXTRA);
+                    headerHeight = Math.max(headerHeight,onlyMeasureChild(tableExtraHeaderView));
+                }else {
+                    final View tableHeaderView = adapter.getTableHeaderView(i,recycler.getRecycledView(McPropertyDataType.TYPE_CAR_HEADER),this);
+                    recycler.addRecycledView(tableHeaderView,McPropertyDataType.TYPE_CAR_HEADER);
+                    headerHeight = Math.max(headerHeight,onlyMeasureChild(tableHeaderView));
+                }
             }
 
         }
@@ -212,16 +224,22 @@ public class McPropertiesView extends ViewGroup{
             // 随后测量 section中的每一行
             for (int j = 0; j < adapter.getRowCount(i); j++){
                 int cellHeight = 0;
-                for ( int k = -1; k < adapter.getColumnCount(); k++ ){
+                for ( int k = -1; k < realColumnCount; k++ ){
                     if ( k == -1 ){ //measure cellTitleView(-1)
                         final View cellTitleView = adapter.getCellTitleView(i,j,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_TITLE),this);
                         cellHeight = Math.max( cellHeight,onlyMeasureChild(cellTitleView));
                         recycler.addRecycledView(cellTitleView,McPropertyDataType.TYPE_PROPERTY_TITLE);
                     }else{
                         //measure cellView(从0开始)
-                        final View cellView = adapter.getCellView(i,j,k,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL),this);
-                        cellHeight = Math.max(cellHeight,onlyMeasureChild(cellView));
-                        recycler.addRecycledView(cellView,McPropertyDataType.TYPE_PROPERTY_CELL);
+                        if ( isSupportExtraHeader && k == realColumnCount - 1 ){ //如果支持 额外header（最后一个）
+                            final View extraCellView  = adapter.getExtraCellView(i,j,k,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL_EXTRA),this);
+                            cellHeight = Math.max(cellHeight,onlyMeasureChild(extraCellView));
+                            recycler.addRecycledView(extraCellView,McPropertyDataType.TYPE_PROPERTY_CELL_EXTRA);
+                        }else{
+                            final View cellView = adapter.getCellView(i,j,k,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL),this);
+                            cellHeight = Math.max(cellHeight,onlyMeasureChild(cellView));
+                            recycler.addRecycledView(cellView,McPropertyDataType.TYPE_PROPERTY_CELL);
+                        }
                     }
                 }
                 asignRowHeights(cellHeight);
@@ -242,6 +260,12 @@ public class McPropertiesView extends ViewGroup{
 //        addViewInLayout(child, 0, params, true);
 
         child.measure(MeasureSpec.EXACTLY | cellWidth, MeasureSpec.UNSPECIFIED);
+        return child.getMeasuredHeight();
+    }
+
+    private int exactlyMeasureChild(final View child,int height){
+        child.setDrawingCacheEnabled(true);
+        child.measure(MeasureSpec.EXACTLY | cellWidth, MeasureSpec.EXACTLY | height);
         return child.getMeasuredHeight();
     }
 
@@ -324,7 +348,7 @@ public class McPropertiesView extends ViewGroup{
         } else if (desiredScroll < 0) {
             desiredScroll = 0;
         } else {
-            desiredScroll = Math.min(desiredScroll,adapter.getColumnCount()*cellWidth + cellWidth - width);
+            desiredScroll = Math.min(desiredScroll,realColumnCount*cellWidth + cellWidth - width);
         }
         return desiredScroll;
     }
@@ -479,6 +503,7 @@ public class McPropertiesView extends ViewGroup{
         }
 
         this.removeView(leftCornerView);
+        exactlyMeasureChild(leftCornerView,rowHeights[0]);
         this.addView(leftCornerView);
 
         Log.e("qinqun","header size=>"+headerViews.size());
@@ -662,10 +687,17 @@ public class McPropertiesView extends ViewGroup{
     }
 
     private void addHeaderLeftOrRight(int column,int index){
-        View headerView = adapter.getTableHeaderView(column,recycler.getRecycledView(McPropertyDataType.TYPE_CAR_HEADER),this);
+        View headerView = null;
+
+        if ( isSupportExtraHeader && column == adapter.getColumnCount() - 1 ){
+            headerView = adapter.getExtraTableHeaderView(column,recycler.getRecycledView(McPropertyDataType.TYPE_CAR_HEADER_EXTRA),this);
+            bindViewTags(headerView,McPropertyDataType.TYPE_CAR_HEADER_EXTRA,-1,0,column);
+        }else{
+            headerView = adapter.getTableHeaderView(column,recycler.getRecycledView(McPropertyDataType.TYPE_CAR_HEADER),this);
+            bindViewTags(headerView,McPropertyDataType.TYPE_CAR_HEADER,-1,0,column);
+        }
         addView(headerView);
         headerViews.add(index,headerView);
-        bindViewTags(headerView,McPropertyDataType.TYPE_CAR_HEADER,-1,0,column);
     }
 
     private void addLeftOrRight(int column,int index){
@@ -686,10 +718,16 @@ public class McPropertiesView extends ViewGroup{
                 }
                 int rowIndexInSection = adapter.getRowIndexInSection(realRowIndex);
                 List<View> viewList = cellViews.get(cellPostion);
-                View cellView = adapter.getCellView(currentSection,rowIndexInSection,column,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL),this);
-                addView(cellView,0);
-                viewList.add(index,cellView);
-                bindViewTags(cellView,McPropertyDataType.TYPE_PROPERTY_CELL,currentSection,realRowIndex,column);
+                View cellOrExtraView = null;
+                if ( isSupportExtraHeader && column == adapter.getColumnCount() -1 ){
+                    cellOrExtraView = adapter.getExtraCellView(currentSection,rowIndexInSection,column,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL_EXTRA),this);
+                    bindViewTags(cellOrExtraView,McPropertyDataType.TYPE_PROPERTY_CELL_EXTRA,currentSection,realRowIndex,column);
+                }else {
+                    cellOrExtraView =  adapter.getCellView(currentSection,rowIndexInSection,column,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL),this);
+                    bindViewTags(cellOrExtraView,McPropertyDataType.TYPE_PROPERTY_CELL,currentSection,realRowIndex,column);
+                }
+                addView(cellOrExtraView,0);
+                viewList.add(index,cellOrExtraView);
                 cellPostion++;
             }
         }
@@ -711,6 +749,7 @@ public class McPropertiesView extends ViewGroup{
         int realColumnIndex;
         List<View> viewList = new ArrayList<>();
         for ( int columnIndex = 0; columnIndex < columnCount; columnIndex++ ){
+            //todo 做到这里来了
             realColumnIndex = firstColumn + columnIndex;
             View cellView = adapter.getCellView(sectionIndex,rowIndexInSection,realColumnIndex,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL),this);
             addView(cellView,0);
@@ -787,7 +826,7 @@ public class McPropertiesView extends ViewGroup{
 
 
     private int getMaxScrollX() {
-        return adapter.getColumnCount()*cellWidth + cellWidth - width;
+        return realColumnCount*cellWidth + cellWidth - width;
     }
 
     private int getMaxScrollY() {
@@ -801,6 +840,10 @@ public class McPropertiesView extends ViewGroup{
         isRowHeightsInited = false;
         scrollBounds();
         realRowCount = adapter.getTotalRowCount();
+        realColumnCount = adapter.getColumnCount();
+        if ( isSupportExtraHeader ){
+            realColumnCount += 1;
+        }
         rowHeightsAsignIndex = 0;
         if ( rowHeights != null ){
             rowHeights = null;
@@ -836,7 +879,6 @@ public class McPropertiesView extends ViewGroup{
             width = r - l;
             height = b - t;
             int left,top,right,bottom;
-            int columnCount = adapter.getColumnCount();
 
             //需要考虑分割线
             /**
@@ -850,20 +892,27 @@ public class McPropertiesView extends ViewGroup{
             bindViewTags(leftCornerView,McPropertyDataType.TYPE_SHOW_ALL_OR_DIFF,-1,0,0);
             //HeaderView
             left = cellWidth - scrollX % cellWidth;
-            for ( int columnIndex = firstColumn; columnIndex < columnCount && left < width; columnIndex++ ){
-                View headerView = adapter.getTableHeaderView(columnIndex,recycler.getRecycledView(McPropertyDataType.TYPE_CAR_HEADER),this);
+            for ( int columnIndex = firstColumn; columnIndex < realColumnCount && left < width; columnIndex++ ){
+                View headerView = null;
+                if ( isSupportExtraHeader && columnIndex == realColumnCount -1 ){
+                    headerView = adapter.getExtraTableHeaderView(columnIndex,recycler.getRecycledView(McPropertyDataType.TYPE_CAR_HEADER_EXTRA),this);
+                    bindViewTags(headerView,McPropertyDataType.TYPE_CAR_HEADER_EXTRA,-1,0,columnIndex);
+                }else {
+                    headerView = adapter.getTableHeaderView(columnIndex,recycler.getRecycledView(McPropertyDataType.TYPE_CAR_HEADER),this);
+                    bindViewTags(headerView,McPropertyDataType.TYPE_CAR_HEADER,-1,0,columnIndex);
+                }
                 right = left + cellWidth;
                 addView(headerView,0);
                 headerViews.add(headerView);
+                exactlyMeasureChild(headerView,rowHeights[0]);
                 headerView.layout(left,0,right,rowHeights[0]);
-                bindViewTags(headerView,McPropertyDataType.TYPE_CAR_HEADER,-1,0,columnIndex);
                 left = right;
             }
 
             /**
              * layout title
              */
-            top = rowHeights[0] - scrollY % rowHeights[firstRow] ; //todo divide by zero
+            top = rowHeights[0] - scrollY % rowHeights[firstRow] ;
             for ( int rowIndex = firstRow; rowIndex < adapter.getTotalRowCount() && top < height; rowIndex++ ){
                 int sectionIndex = adapter.getSectionIndex(rowIndex);
                 if ( sectionIndex == -1 ){ //说明是 tableHeader
@@ -874,6 +923,7 @@ public class McPropertiesView extends ViewGroup{
                     View sectionTitleView = adapter.getSectionHeaderView(sectionIndex,recycler.getRecycledView(McPropertyDataType.TYPE_GROUP_TITLE),this);
                     addView(sectionTitleView,0);
                     sectionTitleViews.add(sectionTitleView);
+                    exactlyMeasureChild(sectionTitleView,rowHeights[rowIndex]);
                     sectionTitleView.layout(0,top,width,bottom);
                     bindViewTags(sectionTitleView,McPropertyDataType.TYPE_GROUP_TITLE,sectionIndex,rowIndex,0);
                 }else{ //cellTitle
@@ -881,19 +931,27 @@ public class McPropertiesView extends ViewGroup{
                     View cellTitleView = adapter.getCellTitleView(sectionIndex,rowIndexInSection,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_TITLE),this);
                     addView(cellTitleView);
                     cellTitleViews.add(cellTitleView);
+                    exactlyMeasureChild(cellTitleView,rowHeights[rowIndex]);
                     cellTitleView.layout(0,top,cellWidth,bottom);
                     bindViewTags(cellTitleView,McPropertyDataType.TYPE_PROPERTY_TITLE,sectionIndex,rowIndex,-1);
 
                     // layout cellView
                     left = cellWidth - scrollX % cellWidth;
                     List<View> viewList = new ArrayList<>();
-                    for ( int columnIndex = firstColumn; columnIndex < columnCount && left < width; columnIndex++ ){
-                        View cellView = adapter.getCellView(sectionIndex,rowIndexInSection,columnIndex,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL),this);
+                    for ( int columnIndex = firstColumn; columnIndex < realColumnCount && left < width; columnIndex++ ){
+                        View cellOrExtraView = null;
+                        if ( isSupportExtraHeader && columnIndex == realColumnCount -1 ){
+                            cellOrExtraView = adapter.getExtraCellView(sectionIndex,rowIndexInSection,columnIndex,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL_EXTRA),this);
+                            bindViewTags(cellOrExtraView,McPropertyDataType.TYPE_PROPERTY_CELL_EXTRA,sectionIndex,rowIndex,columnIndex);
+                        }else{
+                            cellOrExtraView = adapter.getCellView(sectionIndex,rowIndexInSection,columnIndex,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL),this);
+                            bindViewTags(cellOrExtraView,McPropertyDataType.TYPE_PROPERTY_CELL,sectionIndex,rowIndex,columnIndex);
+                        }
                         right = left + cellWidth;
-                        addView(cellView,0);
-                        viewList.add(cellView);
-                        cellView.layout(left,top,right,bottom);
-                        bindViewTags(cellView,McPropertyDataType.TYPE_PROPERTY_CELL,sectionIndex,rowIndex,columnIndex);
+                        addView(cellOrExtraView,0);
+                        viewList.add(cellOrExtraView);
+                        exactlyMeasureChild(cellOrExtraView,rowHeights[rowIndex]);
+                        cellOrExtraView.layout(left,top,right,bottom);
                         left = right;
                     }
                     cellViews.add(viewList);
@@ -1031,7 +1089,7 @@ public class McPropertiesView extends ViewGroup{
     @Override
     protected int computeHorizontalScrollExtent() {
         final float tableSize = width - cellWidth;
-        final float contentSize = adapter.getColumnCount() * cellWidth;
+        final float contentSize = realColumnCount * cellWidth;
         final float percentageOfVisibleView = tableSize / contentSize;
 
         return Math.round(percentageOfVisibleView * tableSize);

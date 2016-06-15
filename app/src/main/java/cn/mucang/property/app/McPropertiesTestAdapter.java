@@ -5,6 +5,7 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.BitSet;
@@ -161,17 +162,19 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
     @Override
     public View getTableHeaderView(int column, View convertView, ViewGroup parent) {
         TextView tvTableView = null;
+        Button btnDelete;
         if ( convertView == null ){
-            convertView = inflater.inflate(R.layout.table_cell_view,parent,false);
+            convertView = inflater.inflate(R.layout.table_header_view,parent,false);
         }
-        tvTableView = (TextView) convertView;
+        tvTableView = (TextView) convertView.findViewById(R.id.tvCellView);
+        btnDelete = (Button) convertView.findViewById(R.id.btnDelete);
         try {
             StringBuilder sb = new StringBuilder();
             sb.append("(header").append(column).append(")");
             CanPeiCarEntity carEntity = headerCars.get(column);
             tvTableView.setText(sb.toString()+carEntity.getCarName());
         }catch (NullPointerException e){}
-        convertView.setOnClickListener(onCarTitleClickListener);
+        btnDelete.setOnClickListener(onCarTitleClickListener);
         return convertView;
     }
 
@@ -200,6 +203,22 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
     }
 
     @Override
+    public View getExtraTableHeaderView(int column, View convertView, ViewGroup parent) {
+        if ( convertView == null ){
+            convertView = inflater.inflate(R.layout.table_extra_header_view,parent,false);
+        }
+        return convertView;
+    }
+
+    @Override
+    public View getExtraCellView(int section, int row, int column, View convertView, ViewGroup parent) {
+        if ( convertView == null ){
+            convertView = inflater.inflate(R.layout.table_extra_cell_view,parent,false);
+        }
+        return convertView;
+    }
+
+    @Override
     public int getItemViewType(int section, int row, int column) {
         return 0;
     }
@@ -212,9 +231,9 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
     private View.OnClickListener onCarTitleClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            int viewType = (Integer)v.getTag(R.id.tag_view_type);
-            //todo 这里删除等操作
-            int column = (Integer)v.getTag(R.id.tag_column);
+            View parentView = (View) v.getParent();
+            int viewType = (Integer)parentView.getTag(R.id.tag_view_type);
+            int column = (Integer)parentView.getTag(R.id.tag_column);
 
             if ( column >= headerCars.size() ){
                 return;

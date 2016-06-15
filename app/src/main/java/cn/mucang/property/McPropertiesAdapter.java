@@ -44,6 +44,26 @@ public interface McPropertiesAdapter {
 
     public View getLeftCornerView(View convertView, ViewGroup parent);
 
+    /**
+     * 支持额外头部
+     * @param column
+     * @param convertView
+     * @param parent
+     * @return
+     */
+    public View getExtraTableHeaderView(int column,View convertView,ViewGroup parent);
+
+    /**
+     * 支持额外cell
+     * @param section
+     * @param row
+     * @param column
+     * @param convertView
+     * @param parent
+     * @return
+     */
+    public View getExtraCellView(int section,int row,int column,View convertView,ViewGroup parent);
+
     public int getItemViewType(int section, int row, int column);
 
     public int getViewTypeCount();

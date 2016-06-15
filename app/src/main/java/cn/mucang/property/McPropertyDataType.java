@@ -10,6 +10,7 @@ public class McPropertyDataType {
     public static final int TYPE_PROPERTY_TITLE = 3;
     public static final int TYPE_PROPERTY_CELL = 4;
     public static final int TYPE_CAR_HEADER_EXTRA = 5;
+    public static final int TYPE_PROPERTY_CELL_EXTRA = 6;
 
-    public static final int TYPE_TOTAL_COUNT = 6;
+    public static final int TYPE_TOTAL_COUNT = 7;
 }
