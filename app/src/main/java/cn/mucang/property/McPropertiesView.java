@@ -756,20 +756,20 @@ public class McPropertiesView extends ViewGroup{
     }
 
     public int getActualScrollX() {
-        return 0;
+        return scrollX;
     }
 
     public int getActualScrollY() {
-        return 0;
+        return scrollY;
     }
 
 
     private int getMaxScrollX() {
-        return 0;
+        return adapter.getColumnCount()*cellWidth + cellWidth - width;
     }
 
     private int getMaxScrollY() {
-        return 0;
+        return getArraySum(rowHeights,0,adapter.getTotalRowCount())-height;
     }
 
     private void reset() {
