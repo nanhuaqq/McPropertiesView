@@ -11,6 +11,7 @@
     tools:context=".app.MainActivity">
 
     <cn.mucang.property.McPropertiesView
+        android:scrollbars="horizontal|vertical"
         android:id="@+id/propertiesView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

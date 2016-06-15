@@ -463,6 +463,7 @@ public class McPropertiesView extends ViewGroup{
         Log.e("qinqun","header size=>"+headerViews.size());
         Log.e("qinqun","view list size=>"+cellViews.size());
         repositionViews();
+        awakenScrollBars();
     }
 
     private void repositionViews(){
@@ -984,5 +985,60 @@ public class McPropertiesView extends ViewGroup{
                 scroller.forceFinished(true);
             }
         }
+    }
+
+
+    /******************************************************************************
+	 * scrollbar实现 相关函数
+	 ******************************************************************************/
+
+    @Override
+    protected int computeHorizontalScrollExtent() {
+        final float tableSize = width - cellWidth;
+        final float contentSize = adapter.getColumnCount() * cellWidth;
+        final float percentageOfVisibleView = tableSize / contentSize;
+
+        return Math.round(percentageOfVisibleView * tableSize);
+    }
+
+    @Override
+    protected int computeHorizontalScrollOffset() {
+        final float maxScrollX = getMaxScrollX();
+        final float percentageOfViewScrolled = getActualScrollX() / maxScrollX;
+        final int maxHorizontalScrollOffset = width - cellWidth - computeHorizontalScrollExtent();
+
+        return cellWidth + Math.round(percentageOfViewScrolled * maxHorizontalScrollOffset);
+    }
+
+
+    @Override
+    protected int computeHorizontalScrollRange() {
+        return width;
+    }
+
+
+    @Override
+    protected int computeVerticalScrollExtent() {
+        final float tableSize = height - rowHeights[0];
+        final float contentSize = getArraySum(rowHeights,1,adapter.getTotalRowCount());
+        final float percentageOfVisibleView = tableSize / contentSize;
+
+        return Math.round(percentageOfVisibleView * tableSize);
+    }
+
+
+    @Override
+    protected int computeVerticalScrollOffset() {
+        final float maxScrollY = getMaxScrollY();
+        final float percentageOfViewScrolled = getActualScrollY() / maxScrollY;
+        final int maxHorizontalScrollOffset = height - rowHeights[0] - computeVerticalScrollExtent();
+
+        return rowHeights[0] + Math.round(percentageOfViewScrolled * maxHorizontalScrollOffset);
+    }
+
+
+    @Override
+    protected int computeVerticalScrollRange() {
+        return height;
     }
 }
