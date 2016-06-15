@@ -1,7 +1,10 @@
 package cn.mucang.property.app;
 
+import android.support.v4.widget.ScrollerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ListView;
 
 import cn.mucang.android.core.config.MucangActivity;
 import cn.mucang.property.McPropertiesView;
@@ -13,7 +16,6 @@ public class NormalActivity extends AppCompatActivity {
 
     private McPropertiesView propertiesView;
     private McPropertiesTestAdapter testAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +23,13 @@ public class NormalActivity extends AppCompatActivity {
         propertiesView = (McPropertiesView) findViewById(R.id.propertiesView);
         testAdapter = new McPropertiesTestAdapter(this,getSourceData());
         propertiesView.setAdapter(testAdapter);
+
+        findViewById(R.id.btnSmoothScroll).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                propertiesView.smoothScrollToColumn(propertiesView.getFirstColumn() + 1);
+            }
+        });
     }
 
     private GetCarPropertiesResultEntity getSourceData(){

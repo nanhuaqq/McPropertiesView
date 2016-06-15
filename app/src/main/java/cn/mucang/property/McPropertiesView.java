@@ -347,8 +347,8 @@ public class McPropertiesView extends ViewGroup{
             // no op
         } else if (desiredScroll < 0) {
             desiredScroll = 0;
-        } else {
-            desiredScroll = Math.min(desiredScroll,realColumnCount*cellWidth + cellWidth - width);
+        } else { //+ (adapter.getColumnCount() -3) * dividerSize   todo 计算有问题
+            desiredScroll = Math.min(desiredScroll,realColumnCount * cellWidth + cellWidth  - width );
         }
         return desiredScroll;
     }
@@ -359,7 +359,7 @@ public class McPropertiesView extends ViewGroup{
         } else if (desiredScroll < 0) {
             desiredScroll = 0;
         } else {
-            desiredScroll = Math.min(desiredScroll, getArraySum(rowHeights,0,adapter.getTotalRowCount())-height);
+            desiredScroll = Math.min(desiredScroll, getArraySum(rowHeights,0,adapter.getTotalRowCount()) + realColumnCount * dividerSize -height);
         }
         return desiredScroll;
     }
@@ -525,7 +525,7 @@ public class McPropertiesView extends ViewGroup{
             right = left + cellWidth;
             exactlyMeasureChild(headerView,rowHeights[0]);
             headerView.layout(left,0,right,rowHeights[0]);
-            left = right;
+            left = right + dividerSize;
         }
 
         /**
@@ -566,11 +566,11 @@ public class McPropertiesView extends ViewGroup{
                     right = left + cellWidth;
                     exactlyMeasureChild(cellView,rowHeights[realRowIndex]);
                     cellView.layout(left,top,right,bottom);
-                    left = right;
+                    left = right + dividerSize;
                 }
                 cellPosition ++;
             }
-            top = bottom;
+            top = bottom + dividerSize;
         }
         invalidate();
     }
@@ -815,7 +815,7 @@ public class McPropertiesView extends ViewGroup{
      * @return
      */
     private int getFilledWidth(int deltaScrollX){
-        return ( headerViews.size() + 1 ) * cellWidth - deltaScrollX;
+        return ( headerViews.size() + 1 ) * cellWidth + (headerViews.size() - 1) * dividerSize - deltaScrollX;
     }
 
     /**
@@ -916,7 +916,7 @@ public class McPropertiesView extends ViewGroup{
                 headerViews.add(headerView);
                 exactlyMeasureChild(headerView,rowHeights[0]);
                 headerView.layout(left,0,right,rowHeights[0]);
-                left = right;
+                left = right + dividerSize;
             }
 
             /**
@@ -962,11 +962,11 @@ public class McPropertiesView extends ViewGroup{
                         viewList.add(cellOrExtraView);
                         exactlyMeasureChild(cellOrExtraView,rowHeights[rowIndex]);
                         cellOrExtraView.layout(left,top,right,bottom);
-                        left = right;
+                        left = right + dividerSize;
                     }
                     cellViews.add(viewList);
                 }
-                top = bottom;
+                top = bottom + dividerSize;
             }
             Log.e("qinqun","test");
         }
@@ -1040,7 +1040,30 @@ public class McPropertiesView extends ViewGroup{
         }
     }
 
-    // http://stackoverflow.com/a/6219382/842697
+    public int getFirstColumn() {
+        return firstColumn;
+    }
+
+    public void setFirstColumn(int firstColumn) {
+        this.firstColumn = firstColumn;
+    }
+
+    public void smoothScrollToColumn(int targetColumn){
+        int deltaScrollX = scrollX - firstColumn * cellWidth;
+        if ( targetColumn == firstColumn ){
+            smoothScrollByOffset( - deltaScrollX );
+        }else{
+            smoothScrollByOffset( cellWidth + cellWidth - deltaScrollX );
+        }
+    }
+
+    private void smoothScrollByOffset(int offset){
+        if (!flinger.isFinished()) { // If scrolling, then stop now
+            flinger.forceFinished();
+        }
+        flinger.smoothScroll(offset);
+    }
+
     private class Flinger implements Runnable {
         private final Scroller scroller;
 
@@ -1057,6 +1080,10 @@ public class McPropertiesView extends ViewGroup{
             lastX = initX;
             lastY = initY;
             post(this);
+        }
+
+        public void smoothScroll(int offset){
+            scroller.startScroll(scrollX,scrollY,offset,0);
         }
 
         public void run() {
