@@ -1,6 +1,7 @@
 package cn.mucang.property;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.database.DataSetObserver;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -90,6 +91,11 @@ public class McPropertiesView extends ViewGroup{
     private View currentHeader;
     private float headerOffset;
 
+    /********************************* 自定义属性 *****************************************/
+    private boolean isSupportExtraHeader = false;
+    private boolean isDividerEnable = true;
+    private float pvDividerSize = 2;
+
     public McPropertiesView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
@@ -105,7 +111,21 @@ public class McPropertiesView extends ViewGroup{
         cellTitleViews = new ArrayList<>();
         cellViews = new ArrayList<>();
 
+        init(attrs);
+
         this.setWillNotDraw(false);
+    }
+
+    private void init(AttributeSet attr){
+        if ( attr != null ){
+            TypedArray a = getContext().obtainStyledAttributes(attr,R.styleable.McPropertiesView);
+            if ( a!= null ){
+                isSupportExtraHeader = a.getBoolean(R.styleable.McPropertiesView_isSupportExtraHeader,false);
+                isDividerEnable = a.getBoolean(R.styleable.McPropertiesView_isDividerEnable,true);
+                pvDividerSize = a.getDimension(R.styleable.McPropertiesView_pvDividerSize,2f);
+                a.recycle();
+            }
+        }
     }
 
     public McPropertiesAdapter getAdapter() {
