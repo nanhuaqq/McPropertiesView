@@ -501,10 +501,6 @@ public class McPropertiesView extends ViewGroup{
                 }
                 View sectionTitleView = sectionTitleViews.get(sectionPosition);
                 sectionTitleView.layout(0,top,width,bottom);
-                currentHeader = sectionTitleView;
-                if ( currentHeader != null ){
-                    headerOffset = currentHeader.getTop() - currentHeader.getHeight();
-                }
                 sectionPosition++;
             }else{ //cellTitle // TODO: 2016/6/14 空指针
                 if ( cellPosition >= cellTitleViews.size() ){
@@ -528,11 +524,22 @@ public class McPropertiesView extends ViewGroup{
         invalidate();
     }
 
+    public static final int UNKONW_INDEX = -100;
+    private int currentSection = 0;
     @Override
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
+        int sectionIndex = adapter.getSectionIndex(firstRow);
+        currentHeader = adapter.getSectionHeaderView(sectionIndex,recycler.getRecycledView(McPropertyDataType.TYPE_GROUP_TITLE),this);
+        bindViewTags(currentHeader,McPropertyDataType.TYPE_GROUP_TITLE,sectionIndex,UNKONW_INDEX,0);
+
         if (adapter == null || currentHeader == null)
             return;
+
+
+//        currentHeader.setDrawingCacheEnabled(true);
+        currentHeader.measure(MeasureSpec.EXACTLY | width,MeasureSpec.UNSPECIFIED);
+        currentHeader.layout(0,0,width,currentHeader.getMeasuredHeight());
 
         int saveCount = canvas.save();
         canvas.translate(0, rowHeights[0]);
@@ -564,6 +571,9 @@ public class McPropertiesView extends ViewGroup{
     }
 
     private void removeSectionTitleTopOrBottom(int position){
+        if ( position >= sectionTitleViews.size() ){
+            return;
+        }
         removeView(sectionTitleViews.remove(position));
     }
 
@@ -633,7 +643,7 @@ public class McPropertiesView extends ViewGroup{
         View headerView = adapter.getTableHeaderView(column,recycler.getRecycledView(McPropertyDataType.TYPE_CAR_HEADER),this);
         addView(headerView);
         headerViews.add(index,headerView);
-        bindViewTags(headerView,McPropertyDataType.TYPE_GROUP_TITLE,-1,0,column);
+        bindViewTags(headerView,McPropertyDataType.TYPE_CAR_HEADER,-1,0,column);
     }
 
     private void addLeftOrRight(int column,int index){
