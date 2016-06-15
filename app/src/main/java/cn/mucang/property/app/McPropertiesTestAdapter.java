@@ -171,6 +171,7 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
             CanPeiCarEntity carEntity = headerCars.get(column);
             tvTableView.setText(sb.toString()+carEntity.getCarName());
         }catch (NullPointerException e){}
+        convertView.setOnClickListener(onCarTitleClickListener);
         return convertView;
     }
 
@@ -207,4 +208,31 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
     public int getViewTypeCount() {
         return McPropertyDataType.TYPE_TOTAL_COUNT;
     }
+
+    private View.OnClickListener onCarTitleClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            int viewType = (Integer)v.getTag(R.id.tag_view_type);
+            //todo 这里删除等操作
+            int column = (Integer)v.getTag(R.id.tag_column);
+
+            if ( column >= headerCars.size() ){
+                return;
+            }
+            //首先删除carHeader
+            headerCars.remove(column);
+            for (CanPeiGroup canpeiGroup:sections) {
+                for (CanPeiRow canpeiRow:canpeiGroup.getItems()) {
+                    canpeiRow.getValues().remove(column);
+                }
+            }
+
+            rowIndexMapSectionArray = null;
+            rowIndexMapRowIndexInSectionArray = null;
+            sectionTitlePositionsSet = null;
+            totalSectionCount = 0;
+            totalRowCount = 0;
+            notifyDataSetChanged();
+        }
+    };
 }
