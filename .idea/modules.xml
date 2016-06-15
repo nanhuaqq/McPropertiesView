@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/McPropertiesView.iml" filepath="$PROJECT_DIR$/McPropertiesView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/stickyscrollview/stickyscrollview.iml" filepath="$PROJECT_DIR$/stickyscrollview/stickyscrollview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stickyscrollview/stickyscrollview.iml" filepath="$PROJECT_DIR$/stickyscrollview/stickyscrollview.iml" />
     </modules>
   </component>
 </project>

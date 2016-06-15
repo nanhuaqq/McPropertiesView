@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:minHeight="45dp"
     android:layout_height="wrap_content"
+    android:background="#ffffff"
     android:orientation="vertical"
     >
     <TextView
