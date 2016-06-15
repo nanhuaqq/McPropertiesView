@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="McPropertiesView">
+        <!--是否支持 额外的header（最后一个添加） -->
+        <attr name="isSupportExtraHeader" format="boolean|reference"></attr>
+        <!--是否开启分割线-->
+        <attr name="isDividerEnable" format="boolean|reference"></attr>
+        <!---->
+        <attr name="pvDividerSize" format="dimension|reference"></attr>
+    </declare-styleable>
+
+</resources>
