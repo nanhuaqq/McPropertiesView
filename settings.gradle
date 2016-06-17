@@ -1,1 +1,1 @@
-include ':app', ':stickyscrollview'
+include ':app', ':stickyscrollview', ':myapplication'

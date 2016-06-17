@@ -2,4 +2,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="cxk_cx_canpei_main_text_size">13dp</dimen>
+    <dimen name="cxk_cx_canpei_main_text_size_big">15dp</dimen>
+    <dimen name="cxk_cx_canpei_right_size">76dp</dimen>
 </resources>

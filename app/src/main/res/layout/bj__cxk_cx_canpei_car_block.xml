@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bj__cxk_cx_canpei_block_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvCarTypeName"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:maxLines="2"
+            android:textColor="#333333"
+            android:textSize="13dp" />
+
+        <Button
+            android:id="@+id/btnDuibi"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textColor="#666666"
+            android:text="对比"
+            android:orientation="horizontal" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ibtnRemove"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="end"
+        android:background="@android:color/transparent"
+        android:src="@drawable/bj__ic_close_02" />
+</FrameLayout>

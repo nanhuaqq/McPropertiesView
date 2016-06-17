@@ -16,10 +16,12 @@ import android.widget.Scroller;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.mucang.property.utils.DimUtils;
+import cn.mucang.android.core.config.MucangConfig;
+import cn.mucang.android.core.utils.UnitUtils;
 
 /**
- * Created by nanhuaqq on 2016/5/12.
+ * Created by qinqun on 2016/6/16.
+ * Email : qinqun@mucang.cn
  */
 public class McPropertiesView extends ViewGroup{
 
@@ -96,7 +98,6 @@ public class McPropertiesView extends ViewGroup{
     /********************************* 自定义属性 *****************************************/
     private boolean isSupportExtraHeader = false;
     private boolean isDividerEnable = true;
-    private float pvDividerSize = 2;
 
     public McPropertiesView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -124,7 +125,7 @@ public class McPropertiesView extends ViewGroup{
             if ( a!= null ){
                 isSupportExtraHeader = a.getBoolean(R.styleable.McPropertiesView_isSupportExtraHeader,false);
                 isDividerEnable = a.getBoolean(R.styleable.McPropertiesView_isDividerEnable,true);
-                pvDividerSize = a.getDimension(R.styleable.McPropertiesView_pvDividerSize,2f);
+                dividerSize = (int) a.getDimension(R.styleable.McPropertiesView_pvDividerSize,2f);
                 a.recycle();
             }
         }
@@ -143,7 +144,8 @@ public class McPropertiesView extends ViewGroup{
         this.adapter.registerDataSetObserver(observer);
 
         this.recycler = new McPropertiesChildrenRecycler(adapter.getViewTypeCount());
-        this.cellWidth = DimUtils.dip2px(getContext(),120);
+        float scale = getContext().getResources().getDisplayMetrics().density;
+        this.cellWidth = (int)(120 * scale + 0.5F);
 
         scrollX = 0;
         scrollY = 0;
@@ -217,7 +219,8 @@ public class McPropertiesView extends ViewGroup{
             //首先measure sectionTitle
             final View sectionTitleView = adapter.getSectionHeaderView(i,recycler.getRecycledView(McPropertyDataType.TYPE_GROUP_TITLE),this);
             int sectionViewHeight = 0;
-            sectionViewHeight = Math.max(sectionViewHeight,onlyMeasureChild(sectionTitleView));
+            sectionTitleView.measure(MeasureSpec.EXACTLY | width,MeasureSpec.UNSPECIFIED);
+            sectionViewHeight = sectionTitleView.getMeasuredHeight();
             recycler.addRecycledView(sectionTitleView,McPropertyDataType.TYPE_GROUP_TITLE);
             asignRowHeights(sectionViewHeight);
 
@@ -512,6 +515,14 @@ public class McPropertiesView extends ViewGroup{
         awakenScrollBars();
     }
 
+    private void positionViews(int deltaX,int deltaY){
+        int left,top,right,bottom;
+        //todo 算法改变
+        //leftCornerView
+        leftCornerView.layout(0,0,cellWidth,rowHeights[0]);
+        bindViewTags(leftCornerView,McPropertyDataType.TYPE_SHOW_ALL_OR_DIFF,-1,0,0);
+    }
+
     private void repositionViews(){
         int left, top, right, bottom, i;
 
@@ -548,7 +559,7 @@ public class McPropertiesView extends ViewGroup{
                     continue;
                 }
                 View sectionTitleView = sectionTitleViews.get(sectionPosition);
-                exactlyMeasureChild(sectionTitleView,rowHeights[realRowIndex]);
+                sectionTitleView.measure(MeasureSpec.EXACTLY | width,rowHeights[rowIndexx]);
                 sectionTitleView.layout(0,top,width,bottom);
                 sectionPosition++;
             }else{ //cellTitle
@@ -580,7 +591,13 @@ public class McPropertiesView extends ViewGroup{
     @Override
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
+        if ( adapter == null ){
+            return;
+        }
         int sectionIndex = adapter.getSectionIndex(firstRow);
+        if ( sectionIndex == -1 ){
+            sectionIndex = 0;
+        }
         currentHeader = adapter.getSectionHeaderView(sectionIndex,recycler.getRecycledView(McPropertyDataType.TYPE_GROUP_TITLE),this);
         bindViewTags(currentHeader,McPropertyDataType.TYPE_GROUP_TITLE,sectionIndex,UNKONW_INDEX,0);
 
@@ -869,25 +886,29 @@ public class McPropertiesView extends ViewGroup{
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        reset();
-        measureRowHeights();
-
         final int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         final int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-
         setMeasuredDimension(widthSize, heightSize);
+        width = getMeasuredWidth();
+        height = getMeasuredHeight();
+        if ( adapter != null ){
+            reset();
+            measureRowHeights();
+        }
     }
 
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
+
+        if ( adapter == null ){
+            return;
+        }
         if ( !needRelayout && !changed ){
             return;
         }
         needRelayout = false;
         if ( adapter != null ){
-            width = r - l;
-            height = b - t;
             int left,top,right,bottom;
 
             //需要考虑分割线
@@ -933,7 +954,7 @@ public class McPropertiesView extends ViewGroup{
                     View sectionTitleView = adapter.getSectionHeaderView(sectionIndex,recycler.getRecycledView(McPropertyDataType.TYPE_GROUP_TITLE),this);
                     addView(sectionTitleView,0);
                     sectionTitleViews.add(sectionTitleView);
-                    exactlyMeasureChild(sectionTitleView,rowHeights[rowIndex]);
+                    sectionTitleView.measure(MeasureSpec.EXACTLY | width,rowHeights[rowIndex]);
                     sectionTitleView.layout(0,top,width,bottom);
                     bindViewTags(sectionTitleView,McPropertyDataType.TYPE_GROUP_TITLE,sectionIndex,rowIndex,0);
                 }else{ //cellTitle

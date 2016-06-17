@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tvRowTitle"
+    android:layout_width="@dimen/cxk_cx_canpei_right_size"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bj__cxk_cx_canpei_cell_title_border"
+    android:gravity="center"
+    android:textColor="@color/bj_gray"
+    android:textSize="13dp" />

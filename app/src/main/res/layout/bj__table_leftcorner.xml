@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/llTopButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bj__cxk_cx_canpei_btn_all_param"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
+
+        <RadioButton
+            android:id="@+id/btnShowAllParam"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:button="@null"
+            android:checked="true"
+            android:drawableLeft="@drawable/bj__radio_button"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="全部参数"
+            android:textColor="#666666"
+            android:textSize="15dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/default_divider" />
+
+        <RadioButton
+            android:id="@+id/btnShowDiffentParam"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:button="@null"
+            android:drawableLeft="@drawable/bj__radio_button"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="显示不同"
+            android:textColor="#666666"
+            android:textSize="15dp" />
+    </RadioGroup>
+</FrameLayout>

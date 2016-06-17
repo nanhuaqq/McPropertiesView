@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvParam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tvGetRealPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/bj__btn_main_selector"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="询本地价"
+        android:textColor="#ffffff"
+        android:textSize="14dp"
+        android:visibility="visible"/>
+</LinearLayout>

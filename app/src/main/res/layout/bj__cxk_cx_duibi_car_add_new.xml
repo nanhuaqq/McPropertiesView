@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bj__cxk_cx_canpei_block_bg"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/llAddNewCar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvAddNewCar"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:layout_margin="4dp"
+                android:gravity="center"
+                android:background="@drawable/bj__btn_dui_bi_add_new_bg"
+                android:textColor="#333333"
+                android:text="+"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvChangeCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="添加"
+                android:textColor="#333333"
+                android:textSize="13dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/default_divider"
+            />
+
+        <TextView
+            android:id="@+id/tvRecommend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+
+            android:background="@drawable/bj__cxk_cx_duibi_bottom_grey_bg"
+            android:text="为我推荐"
+            android:textColor="#666666"
+            android:textSize="13dp" />
+    </LinearLayout>
+</FrameLayout>

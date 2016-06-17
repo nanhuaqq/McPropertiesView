@@ -15,13 +15,13 @@ import cn.mucang.property.utils.AssetsUtil;
 public class NormalActivity extends AppCompatActivity {
 
     private McPropertiesView propertiesView;
-    private McPropertiesTestAdapter testAdapter;
+    private SerialSpecMcPropertiesAdapter testAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_normal);
         propertiesView = (McPropertiesView) findViewById(R.id.propertiesView);
-        testAdapter = new McPropertiesTestAdapter(this,getSourceData());
+        testAdapter = new SerialSpecMcPropertiesAdapter(this,getSourceData());
         propertiesView.setAdapter(testAdapter);
 
         findViewById(R.id.btnSmoothScroll).setOnClickListener(new View.OnClickListener() {

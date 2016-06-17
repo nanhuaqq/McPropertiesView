@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="StickyScrollView"><attr format="dimension" name="stuckShadowHeight"/><attr format="reference" name="stuckShadowDrawable"/></declare-styleable>
+</resources>

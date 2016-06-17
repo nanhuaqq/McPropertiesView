@@ -131,7 +131,7 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
         TextView tvCellView = null;
 
         if ( convertView == null ){
-            convertView = inflater.inflate(R.layout.table_cell_view,parent,false);
+            convertView = inflater.inflate(R.layout.bj__table_cell_view,parent,false);
         }
         tvCellView = (TextView) convertView;
         try {
@@ -147,7 +147,7 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
     public View getCellTitleView(int section, int row, View convertView, ViewGroup parent) {
         TextView tvCellTitleView = null;
         if ( convertView == null ){
-            convertView = inflater.inflate(R.layout.table_cell_view,parent,false);
+            convertView = inflater.inflate(R.layout.bj__table_cell_view,parent,false);
         }
         tvCellTitleView = (TextView) convertView;
         try {
@@ -164,7 +164,7 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
         TextView tvTableView = null;
         Button btnDelete;
         if ( convertView == null ){
-            convertView = inflater.inflate(R.layout.table_header_view,parent,false);
+            convertView = inflater.inflate(R.layout.bj__table_header_view,parent,false);
         }
         tvTableView = (TextView) convertView.findViewById(R.id.tvCellView);
         btnDelete = (Button) convertView.findViewById(R.id.btnDelete);
@@ -182,7 +182,7 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
     public View getSectionHeaderView(int section, View convertView, ViewGroup parent) {
         TextView tvSectionHeaderView = null;
         if ( convertView == null ){
-            convertView = inflater.inflate(R.layout.section_title_view,parent,false);
+            convertView = inflater.inflate(R.layout.bj__table_section_title_view,parent,false);
         }
         tvSectionHeaderView = (TextView) convertView;
         tvSectionHeaderView.setBackgroundResource(R.color.colorSectionBg);
@@ -197,7 +197,7 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
 
     @Override
     public View getLeftCornerView(View convertView, ViewGroup parent) {
-        TextView leftCornerView = (TextView) inflater.inflate(R.layout.table_cell_view,parent,false);
+        TextView leftCornerView = (TextView) inflater.inflate(R.layout.bj__table_cell_view,parent,false);
         leftCornerView.setText("left cornerView");
         return leftCornerView;
     }
@@ -205,7 +205,7 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
     @Override
     public View getExtraTableHeaderView(int column, View convertView, ViewGroup parent) {
         if ( convertView == null ){
-            convertView = inflater.inflate(R.layout.table_extra_header_view,parent,false);
+            convertView = inflater.inflate(R.layout.bj__table_extra_header_view,parent,false);
         }
         return convertView;
     }
@@ -213,7 +213,7 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
     @Override
     public View getExtraCellView(int section, int row, int column, View convertView, ViewGroup parent) {
         if ( convertView == null ){
-            convertView = inflater.inflate(R.layout.table_extra_cell_view,parent,false);
+            convertView = inflater.inflate(R.layout.bj__table_extra_cell_view,parent,false);
         }
         return convertView;
     }
