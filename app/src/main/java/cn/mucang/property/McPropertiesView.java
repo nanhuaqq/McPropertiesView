@@ -53,8 +53,6 @@ public class McPropertiesView extends ViewGroup{
     private int maxScrollY;
     private int deltaX;
     private int deltaY;
-    private int layoutLeft = 0;
-    private int layoutTop = 0;
 
     private boolean needRelayout;
 
@@ -260,8 +258,6 @@ public class McPropertiesView extends ViewGroup{
     private void initOtherSize(){
         maxScrollX = calculateMaxScrollX();
         maxScrollY = calculateMaxScrollY();
-        layoutLeft = cellWidth;
-        layoutTop = rowHeights[0];
     }
 
     /**
@@ -492,7 +488,6 @@ public class McPropertiesView extends ViewGroup{
     public void scrollBy(int x, int y) {
         int desiredScrollX = scrollX + x;
         int desiredScrollY = scrollY + y;
-        scrollY += y;
 
         if ( needRelayout ){
             return;
@@ -503,15 +498,12 @@ public class McPropertiesView extends ViewGroup{
 
         scrollBounds(desiredScrollX,desiredScrollY);
         int deltaScrollX = scrollX - firstColumn * cellWidth - firstColumn * dividerSize;
-        layoutLeft -= this.deltaX;
-        layoutTop -= this.deltaY;
         if ( x == 0 ){
             // 不做任何操作
         } else if ( x > 0 ){ //滑动时 view的回收与添加（）
-            while ( cellWidth < deltaScrollX ){
+            while ( cellWidth + dividerSize < deltaScrollX ){
                 removeLeft();
                 deltaScrollX = deltaScrollX - cellWidth - dividerSize;
-                layoutLeft = layoutLeft+cellWidth;
                 firstColumn++;
             }
             while ( getFilledWidth(deltaScrollX) < width ){
@@ -533,12 +525,7 @@ public class McPropertiesView extends ViewGroup{
 //                }
                 firstColumn--;
                 deltaScrollX = scrollX - firstColumn * cellWidth - firstColumn * dividerSize;
-                layoutLeft = layoutLeft - cellWidth - dividerSize;
             }
-        }
-
-        if ( firstColumn == 0 &&  layoutLeft > cellWidth ){
-            layoutLeft = cellWidth;
         }
 
         int deltaScrollY = scrollY - getArraySum(rowHeights,1,firstRow) - ( firstRow - 1 ) * dividerSize;
@@ -548,7 +535,6 @@ public class McPropertiesView extends ViewGroup{
             while ( deltaScrollY > rowHeights[firstRow] ){
                 removeTop();
                 deltaScrollY = deltaScrollY - rowHeights[firstRow] - dividerSize;
-                layoutTop = layoutTop + rowHeights[firstRow] + dividerSize;
                 firstRow++;
             }
             while ( getFilledHeight(firstRow,deltaScrollY) < height ){
@@ -562,7 +548,6 @@ public class McPropertiesView extends ViewGroup{
                 addTop();
                 firstRow = Math.max(1,firstRow);
                 firstRow--;
-                layoutTop = layoutTop - rowHeights[firstRow] - dividerSize;
                 deltaScrollY = scrollY - getArraySum(rowHeights,1,firstRow) - ( firstRow - 1 ) * dividerSize;
             }
         }
@@ -595,7 +580,8 @@ public class McPropertiesView extends ViewGroup{
         bindViewTags(leftCornerView,McPropertyDataType.TYPE_SHOW_ALL_OR_DIFF,-1,0,0);
 
         //HeaderView
-        left = layoutLeft;
+        int deltaScrollX = scrollX - firstColumn * cellWidth - firstColumn * dividerSize;
+        left = cellWidth - deltaScrollX;
         for ( View headerView:headerViews){
             right = left + cellWidth;
             exactlyMeasureChild(headerView,rowHeights[0]);
@@ -606,7 +592,8 @@ public class McPropertiesView extends ViewGroup{
         /**
          * layout title
          */
-        top = layoutTop;
+        int deltaScrollY = scrollY - getArraySum(rowHeights,1,firstRow) - ( firstRow - 1 ) * dividerSize;
+        top = rowHeights[0] - deltaScrollY;
         int rowCount = cellTitleViews.size() + sectionTitleViews.size();
         int sectionPosition = 0;
         int cellPosition = 0;
@@ -634,7 +621,7 @@ public class McPropertiesView extends ViewGroup{
                 cellTitleView.layout(0,top,cellWidth,bottom);
 
                 // layout cellView
-                left = layoutLeft;
+                left = cellWidth - deltaScrollX;
                 List<View> viewList = cellViews.get(cellPosition);
                 for ( View cellView : viewList ){
                     right = left + cellWidth;
