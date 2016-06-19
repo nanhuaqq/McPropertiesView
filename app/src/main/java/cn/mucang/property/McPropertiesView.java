@@ -354,9 +354,9 @@ public class McPropertiesView extends ViewGroup{
         return true;
     }
 
-    private void scrollBounds() {
-        scrollX = scrollBoundsX(scrollX);
-        scrollY = scrollBoundsY(scrollY);
+    private void scrollBounds(int desiredScrollX,int desiredScrollY) {
+        scrollX = scrollBoundsX(desiredScrollX);
+        scrollY = scrollBoundsY(desiredScrollY);
     }
 
     private int scrollBoundsX(int desiredScroll) {
@@ -365,8 +365,8 @@ public class McPropertiesView extends ViewGroup{
             scrollX = maxScrollX;
             deltaX = maxScrollX - scrollX;
         }else if(desiredScroll <=0){
+            deltaX = -scrollX;
             scrollX = 0;
-            deltaX = 0;
         }else {
             scrollX = desiredScroll;
         }
@@ -490,7 +490,8 @@ public class McPropertiesView extends ViewGroup{
 
     @Override
     public void scrollBy(int x, int y) {
-        scrollX += x;
+        int desiredScrollX = scrollX + x;
+        int desiredScrollY = scrollY + y;
         scrollY += y;
 
         if ( needRelayout ){
@@ -499,7 +500,8 @@ public class McPropertiesView extends ViewGroup{
 
         this.deltaX = x;
         this.deltaY = y;
-        scrollBounds();
+
+        scrollBounds(desiredScrollX,desiredScrollY);
         int deltaScrollX = scrollX - firstColumn * cellWidth - firstColumn * dividerSize;
         layoutLeft -= this.deltaX;
         layoutTop -= this.deltaY;
@@ -509,7 +511,7 @@ public class McPropertiesView extends ViewGroup{
             while ( cellWidth < deltaScrollX ){
                 removeLeft();
                 deltaScrollX = deltaScrollX - cellWidth - dividerSize;
-                layoutLeft = layoutLeft+cellWidth+dividerSize;
+                layoutLeft = layoutLeft+cellWidth;
                 firstColumn++;
             }
             while ( getFilledWidth(deltaScrollX) < width ){
@@ -533,7 +535,10 @@ public class McPropertiesView extends ViewGroup{
                 deltaScrollX = scrollX - firstColumn * cellWidth - firstColumn * dividerSize;
                 layoutLeft = layoutLeft - cellWidth - dividerSize;
             }
+        }
 
+        if ( firstColumn == 0 &&  layoutLeft > cellWidth ){
+            layoutLeft = cellWidth;
         }
 
         int deltaScrollY = scrollY - getArraySum(rowHeights,1,firstRow) - ( firstRow - 1 ) * dividerSize;
@@ -917,11 +922,11 @@ public class McPropertiesView extends ViewGroup{
 
 
     private int getMaxScrollX() {
-        return realColumnCount*cellWidth + cellWidth - width;
+        return maxScrollX;
     }
 
     private int getMaxScrollY() {
-        return getArraySum(rowHeights,0,adapter.getTotalRowCount())-height;
+        return maxScrollY;
     }
 
     private void reset() {
@@ -930,7 +935,7 @@ public class McPropertiesView extends ViewGroup{
         }
 
         isRowHeightsInited = false;
-        scrollBounds();
+        scrollBounds(0,0);
         realRowCount = adapter.getTotalRowCount();
         realColumnCount = adapter.getColumnCount();
         if ( isSupportExtraHeader ){
