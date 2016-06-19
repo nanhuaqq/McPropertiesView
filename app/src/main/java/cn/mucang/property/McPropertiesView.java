@@ -16,9 +16,6 @@ import android.widget.Scroller;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.mucang.android.core.config.MucangConfig;
-import cn.mucang.android.core.utils.UnitUtils;
-
 /**
  * Created by qinqun on 2016/6/16.
  * Email : qinqun@mucang.cn
@@ -52,6 +49,12 @@ public class McPropertiesView extends ViewGroup{
 
     private int scrollX;
     private int scrollY;
+    private int maxScrollX;
+    private int maxScrollY;
+    private int deltaX;
+    private int deltaY;
+    private int layoutLeft = 0;
+    private int layoutTop = 0;
 
     private boolean needRelayout;
 
@@ -149,6 +152,8 @@ public class McPropertiesView extends ViewGroup{
 
         scrollX = 0;
         scrollY = 0;
+        maxScrollX = 0;
+        maxScrollY = 0;
         firstColumn = 0;
         firstRow = 1;
 
@@ -248,6 +253,15 @@ public class McPropertiesView extends ViewGroup{
                 asignRowHeights(cellHeight);
             }
         }
+
+        initOtherSize();
+    }
+
+    private void initOtherSize(){
+        maxScrollX = calculateMaxScrollX();
+        maxScrollY = calculateMaxScrollY();
+        layoutLeft = cellWidth;
+        layoutTop = rowHeights[0];
     }
 
     /**
@@ -346,25 +360,54 @@ public class McPropertiesView extends ViewGroup{
     }
 
     private int scrollBoundsX(int desiredScroll) {
-        if (desiredScroll == 0) {
-            // no op
-        } else if (desiredScroll < 0) {
-            desiredScroll = 0;
-        } else { //+ (adapter.getColumnCount() -3) * dividerSize   todo 计算有问题
-            desiredScroll = Math.min(desiredScroll,realColumnCount * cellWidth + cellWidth  - width );
+
+        if ( desiredScroll > maxScrollX ){
+            scrollX = maxScrollX;
+            deltaX = maxScrollX - scrollX;
+        }else if(desiredScroll <=0){
+            scrollX = 0;
+            deltaX = 0;
+        }else {
+            scrollX = desiredScroll;
         }
-        return desiredScroll;
+        return scrollX;
     }
 
     private int scrollBoundsY(int desiredScroll){
-        if (desiredScroll == 0) {
-            // no op
-        } else if (desiredScroll < 0) {
-            desiredScroll = 0;
-        } else {
-            desiredScroll = Math.min(desiredScroll, getArraySum(rowHeights,0,adapter.getTotalRowCount()) + realColumnCount * dividerSize -height);
+        if ( desiredScroll > maxScrollY ){
+            scrollY = maxScrollY;
+            deltaY = maxScrollY - scrollY;
+        }else if (desiredScroll <=0){
+            scrollY = 0;
+            deltaY = 0;
+        }else {
+            scrollY = desiredScroll;
         }
-        return desiredScroll;
+        return scrollY;
+    }
+
+    /**
+     * 计算 X轴 最大 滑动距离
+     * @return
+     */
+    private int calculateMaxScrollX(){
+        int sumCellWidth = cellWidth * adapter.getColumnCount();
+        int sumDividerWidth = dividerSize * ( adapter.getColumnCount() -1 );
+        int sumScreenWidth = width - cellWidth;
+        int maxScrollX = sumCellWidth + sumDividerWidth - sumScreenWidth;
+        return maxScrollX;
+    }
+
+    /**
+     * 计算 Y轴 最大的 滑动距离
+     * @return
+     */
+    private int calculateMaxScrollY(){
+        int sumCellAndSectionTitleHeight = getArraySum(rowHeights,1,rowHeights.length);
+        int sumDividerHeight = dividerSize * ( adapter.getTotalRowCount() - 2 );
+        int sumScreenHeight = height - rowHeights[0];
+        int maxScrollY = sumCellAndSectionTitleHeight + sumDividerHeight - sumScreenHeight;
+        return maxScrollY;
     }
 
     private int getHeaderBottom(){
@@ -454,17 +497,25 @@ public class McPropertiesView extends ViewGroup{
             return;
         }
 
+        this.deltaX = x;
+        this.deltaY = y;
         scrollBounds();
-        int deltaScrollX = scrollX - firstColumn * cellWidth;
+        int deltaScrollX = scrollX - firstColumn * cellWidth - firstColumn * dividerSize;
+        layoutLeft -= this.deltaX;
+        layoutTop -= this.deltaY;
         if ( x == 0 ){
             // 不做任何操作
         } else if ( x > 0 ){ //滑动时 view的回收与添加（）
             while ( cellWidth < deltaScrollX ){
                 removeLeft();
-                deltaScrollX -= cellWidth;
+                deltaScrollX = deltaScrollX - cellWidth - dividerSize;
+                layoutLeft = layoutLeft+cellWidth+dividerSize;
                 firstColumn++;
             }
             while ( getFilledWidth(deltaScrollX) < width ){
+                if ( firstColumn + headerViews.size() >= adapter.getColumnCount() ){
+                    break;
+                }
                 addRight();
             }
         } else {  // view的回收与添加 （从右到左）
@@ -475,33 +526,39 @@ public class McPropertiesView extends ViewGroup{
 
             while ( deltaScrollX < 0 ){ //都是思想实验啊 shit
                 addLeft();
+//                if ( firstColumn <=0 ){
+//                    break;
+//                }
                 firstColumn--;
-                deltaScrollX = scrollX - firstColumn * cellWidth;
+                deltaScrollX = scrollX - firstColumn * cellWidth - firstColumn * dividerSize;
+                layoutLeft = layoutLeft - cellWidth - dividerSize;
             }
 
         }
 
-        int deltaScrollY = scrollY - getArraySum(rowHeights,1,firstRow);
+        int deltaScrollY = scrollY - getArraySum(rowHeights,1,firstRow) - ( firstRow - 1 ) * dividerSize;
         if ( y == 0 ){
 
         } else if ( y > 0 ){
-            if ( calculateFirstRowBottom() < getHeaderBottom() ){
-                Log.e("qinqunc","remove=>");
+            while ( deltaScrollY > rowHeights[firstRow] ){
                 removeTop();
+                deltaScrollY = deltaScrollY - rowHeights[firstRow] - dividerSize;
+                layoutTop = layoutTop + rowHeights[firstRow] + dividerSize;
                 firstRow++;
             }
-            if ( calculateLastRowBottom() < height ){
-                Log.e("qinqunc","add=>");
+            while ( getFilledHeight(firstRow,deltaScrollY) < height ){
                 addBottom();
             }
         } else {
-            if ( calculateLastRowTop() > height ){
+            while ( getFilledHeight(firstRow,deltaScrollY) - rowHeights[lastRow] > height ){
                 removeBottom();
             }
-            if ( calculateFirstRowTop() > getHeaderBottom() ){
+            while ( deltaScrollY < 0 ){
                 addTop();
                 firstRow = Math.max(1,firstRow);
                 firstRow--;
+                layoutTop = layoutTop - rowHeights[firstRow] - dividerSize;
+                deltaScrollY = scrollY - getArraySum(rowHeights,1,firstRow) - ( firstRow - 1 ) * dividerSize;
             }
         }
 
@@ -511,6 +568,8 @@ public class McPropertiesView extends ViewGroup{
 
         Log.e("qinqun","header size=>"+headerViews.size());
         Log.e("qinqun","view list size=>"+cellViews.size());
+        Log.e("qinqun","x=>"+x);
+        Log.e("qinqun","y=>"+y);
         repositionViews();
         awakenScrollBars();
     }
@@ -531,7 +590,7 @@ public class McPropertiesView extends ViewGroup{
         bindViewTags(leftCornerView,McPropertyDataType.TYPE_SHOW_ALL_OR_DIFF,-1,0,0);
 
         //HeaderView
-        left = cellWidth - scrollX % cellWidth;
+        left = layoutLeft;
         for ( View headerView:headerViews){
             right = left + cellWidth;
             exactlyMeasureChild(headerView,rowHeights[0]);
@@ -542,8 +601,7 @@ public class McPropertiesView extends ViewGroup{
         /**
          * layout title
          */
-        int deltaScrollY = scrollY - getArraySum(rowHeights,1,firstRow);
-        top = rowHeights[0] - deltaScrollY;
+        top = layoutTop;
         int rowCount = cellTitleViews.size() + sectionTitleViews.size();
         int sectionPosition = 0;
         int cellPosition = 0;
@@ -571,7 +629,7 @@ public class McPropertiesView extends ViewGroup{
                 cellTitleView.layout(0,top,cellWidth,bottom);
 
                 // layout cellView
-                left = cellWidth - scrollX % cellWidth;
+                left = layoutLeft;
                 List<View> viewList = cellViews.get(cellPosition);
                 for ( View cellView : viewList ){
                     right = left + cellWidth;
@@ -583,6 +641,7 @@ public class McPropertiesView extends ViewGroup{
             }
             top = bottom + dividerSize;
         }
+
         invalidate();
     }
 
@@ -840,7 +899,12 @@ public class McPropertiesView extends ViewGroup{
      * @return
      */
     private int getFilledHeight(int start,int deltaScrollY) {
-        return rowHeights[0] + getArraySum(rowHeights,start,start+cellTitleViews.size()+sectionTitleViews.size())  - deltaScrollY;
+        int inScreenRowCount = cellTitleViews.size() + sectionTitleViews.size();
+        int end = start + inScreenRowCount;
+        int sumCellAndSectionTitleHeight = getArraySum(rowHeights,start,end);
+        int sumDividerHeight = dividerSize * (inScreenRowCount-1);
+        lastRow = end - 1;
+        return rowHeights[0] +  sumCellAndSectionTitleHeight + sumDividerHeight - deltaScrollY;
     }
 
     public int getActualScrollX() {
@@ -864,6 +928,7 @@ public class McPropertiesView extends ViewGroup{
         if ( !needRelayout ){
             return;
         }
+
         isRowHeightsInited = false;
         scrollBounds();
         realRowCount = adapter.getTotalRowCount();
@@ -891,7 +956,7 @@ public class McPropertiesView extends ViewGroup{
         setMeasuredDimension(widthSize, heightSize);
         width = getMeasuredWidth();
         height = getMeasuredHeight();
-        if ( adapter != null ){
+        if ( adapter != null && needRelayout ){
             reset();
             measureRowHeights();
         }
