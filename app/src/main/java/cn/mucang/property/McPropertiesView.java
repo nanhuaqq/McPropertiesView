@@ -682,6 +682,9 @@ public class McPropertiesView extends ViewGroup{
     }
 
     private void removeCellTitleAndCellTopOrBottom(int position) {
+        if ( cellTitleViews.isEmpty() || position >= cellTitleViews.size() ){
+            return;
+        }
         removeView(cellTitleViews.remove(position));
         List<View> remove = cellViews.remove(position);
         for (View view : remove) {

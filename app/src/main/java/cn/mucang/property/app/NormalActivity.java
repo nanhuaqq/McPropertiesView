@@ -19,6 +19,7 @@ public class NormalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setBackgroundDrawableResource(R.color.bj_transparent);
         setContentView(R.layout.activity_normal);
         propertiesView = (McPropertiesView) findViewById(R.id.propertiesView);
         testAdapter = new SerialSpecMcPropertiesAdapter(this,getSourceData());

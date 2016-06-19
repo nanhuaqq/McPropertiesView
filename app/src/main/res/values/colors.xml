@@ -10,4 +10,5 @@
     <color name="bj_black">#000000</color>
     <color name="main_bg_color">#F2F2F2</color>
     <color name="bj_gray">#797F83</color>
+    <color name="bj_transparent">#00000000</color>
 </resources>
