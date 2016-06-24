@@ -4,4 +4,5 @@
     <item name="tag_section" type="id"/>
     <item name="tag_row" type="id"/>
     <item name="tag_column" type="id"/>
+    <item name="tag_click_type" type="id"/>
 </resources>

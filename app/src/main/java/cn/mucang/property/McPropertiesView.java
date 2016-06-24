@@ -11,10 +11,15 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 import android.widget.Scroller;
+
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.mucang.property.app.SerialSpecMcPropertiesAdapter;
+
 
 /**
  * Created by qinqun on 2016/6/16.
@@ -122,7 +127,7 @@ public class McPropertiesView extends ViewGroup{
 
     private void init(AttributeSet attr){
         if ( attr != null ){
-            TypedArray a = getContext().obtainStyledAttributes(attr,R.styleable.McPropertiesView);
+            TypedArray a = getContext().obtainStyledAttributes(attr, R.styleable.McPropertiesView);
             if ( a!= null ){
                 isSupportExtraHeader = a.getBoolean(R.styleable.McPropertiesView_isSupportExtraHeader,false);
                 isDividerEnable = a.getBoolean(R.styleable.McPropertiesView_isDividerEnable,true);
@@ -498,8 +503,13 @@ public class McPropertiesView extends ViewGroup{
 
         scrollBounds(desiredScrollX,desiredScrollY);
         int deltaScrollX = scrollX - firstColumn * cellWidth - firstColumn * dividerSize;
-        if ( x == 0 ){
-            // 不做任何操作
+        if ( x == 0 && headerViews.size() == 0 ){ //说明是第一次
+            while ( getFilledWidth(deltaScrollX) < width ){
+                if ( firstColumn + headerViews.size() >= adapter.getColumnCount() ){
+                    break;
+                }
+                addRight();
+            }
         } else if ( x > 0 ){ //滑动时 view的回收与添加（）
             while ( cellWidth + dividerSize < deltaScrollX ){
                 removeLeft();
@@ -529,8 +539,13 @@ public class McPropertiesView extends ViewGroup{
         }
 
         int deltaScrollY = scrollY - getArraySum(rowHeights,1,firstRow) - ( firstRow - 1 ) * dividerSize;
-        if ( y == 0 ){
-
+        if ( y == 0 && cellTitleViews.size() == 0 ){
+            while ( getFilledHeight(firstRow,deltaScrollY) < height ){
+                if ( firstRow + cellTitleViews.size() + sectionTitleViews.size() >= adapter.getTotalRowCount() ){
+                    break;
+                }
+                addBottom();
+            }
         } else if ( y > 0 ){
             while ( deltaScrollY > rowHeights[firstRow] ){
                 removeTop();
@@ -538,6 +553,9 @@ public class McPropertiesView extends ViewGroup{
                 firstRow++;
             }
             while ( getFilledHeight(firstRow,deltaScrollY) < height ){
+                if ( firstRow + cellTitleViews.size() + sectionTitleViews.size() >= adapter.getTotalRowCount() ){
+                    break;
+                }
                 addBottom();
             }
         } else {
@@ -552,7 +570,13 @@ public class McPropertiesView extends ViewGroup{
             }
         }
 
-        this.removeView(leftCornerView);
+        if ( leftCornerView != null ){
+            if ( leftCornerView.getParent() != null ){
+                this.removeView(leftCornerView);
+            }
+        }else {
+            leftCornerView = adapter.getLeftCornerView(recycler.getRecycledView(McPropertyDataType.TYPE_SHOW_ALL_OR_DIFF),this);
+        }
         exactlyMeasureChild(leftCornerView,rowHeights[0]);
         this.addView(leftCornerView);
 
@@ -564,20 +588,23 @@ public class McPropertiesView extends ViewGroup{
         awakenScrollBars();
     }
 
-    private void positionViews(int deltaX,int deltaY){
-        int left,top,right,bottom;
-        //todo 算法改变
-        //leftCornerView
-        leftCornerView.layout(0,0,cellWidth,rowHeights[0]);
-        bindViewTags(leftCornerView,McPropertyDataType.TYPE_SHOW_ALL_OR_DIFF,-1,0,0);
-    }
-
     private void repositionViews(){
         int left, top, right, bottom, i;
 
         //leftCornerView
         leftCornerView.layout(0,0,cellWidth,rowHeights[0]);
         bindViewTags(leftCornerView,McPropertyDataType.TYPE_SHOW_ALL_OR_DIFF,-1,0,0);
+
+        if ( adapter instanceof SerialSpecMcPropertiesAdapter){
+            SerialSpecMcPropertiesAdapter serialSpecMcPropertiesAdapter = (SerialSpecMcPropertiesAdapter) adapter;
+            RadioButton btnShowAllParam = (RadioButton) leftCornerView.findViewById(R.id.btnShowAllParam);
+            RadioButton btnShoDiff = (RadioButton) leftCornerView.findViewById(R.id.btnShowDiffentParam);
+            if ( serialSpecMcPropertiesAdapter.isShowAll() ){
+                btnShowAllParam.toggle();
+            }else {
+                btnShoDiff.toggle();
+            }
+        }
 
         //HeaderView
         int deltaScrollX = scrollX - firstColumn * cellWidth - firstColumn * dividerSize;
@@ -802,6 +829,7 @@ public class McPropertiesView extends ViewGroup{
                     bindViewTags(cellOrExtraView,McPropertyDataType.TYPE_PROPERTY_CELL,currentSection,realRowIndex,column);
                 }
                 addView(cellOrExtraView,0);
+                //todo 这里偶尔报数组越界
                 viewList.add(index,cellOrExtraView);
                 cellPostion++;
             }
@@ -923,9 +951,13 @@ public class McPropertiesView extends ViewGroup{
         if ( !needRelayout ){
             return;
         }
-
+        scrollX = 0;
+        scrollY = 0;
+        maxScrollX = 0;
+        maxScrollY = 0;
+        firstColumn = 0;
+        firstRow = 1;
         isRowHeightsInited = false;
-        scrollBounds(0,0);
         realRowCount = adapter.getTotalRowCount();
         realColumnCount = adapter.getColumnCount();
         if ( isSupportExtraHeader ){
@@ -942,6 +974,8 @@ public class McPropertiesView extends ViewGroup{
         cellViews.clear();
         sectionTitleViews.clear();
         removeAllViews();
+
+        needRelayout = true;
     }
 
     @Override
@@ -949,18 +983,18 @@ public class McPropertiesView extends ViewGroup{
         final int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         final int heightSize = MeasureSpec.getSize(heightMeasureSpec);
         setMeasuredDimension(widthSize, heightSize);
-        width = getMeasuredWidth();
-        height = getMeasuredHeight();
         if ( adapter != null && needRelayout ){
             reset();
             measureRowHeights();
+            scrollBounds(0,0);
         }
     }
 
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-
+        width = r - l;
+        height = b - t;
         if ( adapter == null ){
             return;
         }
@@ -969,87 +1003,8 @@ public class McPropertiesView extends ViewGroup{
         }
         needRelayout = false;
         if ( adapter != null ){
-            int left,top,right,bottom;
-
-            //需要考虑分割线
-            /**
-             * 首先layout tableHeaderView
-             */
-            //leftCornerView
-            leftCornerView = adapter.getLeftCornerView(recycler.getRecycledView(McPropertyDataType.TYPE_SHOW_ALL_OR_DIFF),this);
-            exactlyMeasureChild(leftCornerView,rowHeights[0]);
-            addView(leftCornerView,0);
-            leftCornerView.layout(0,0,cellWidth,rowHeights[0]);
-            bindViewTags(leftCornerView,McPropertyDataType.TYPE_SHOW_ALL_OR_DIFF,-1,0,0);
-            //HeaderView
-            left = cellWidth - scrollX % cellWidth;
-            for ( int columnIndex = firstColumn; columnIndex < realColumnCount && left < width; columnIndex++ ){
-                View headerView = null;
-                if ( isSupportExtraHeader && columnIndex == realColumnCount -1 ){
-                    headerView = adapter.getExtraTableHeaderView(columnIndex,recycler.getRecycledView(McPropertyDataType.TYPE_CAR_HEADER_EXTRA),this);
-                    bindViewTags(headerView,McPropertyDataType.TYPE_CAR_HEADER_EXTRA,-1,0,columnIndex);
-                }else {
-                    headerView = adapter.getTableHeaderView(columnIndex,recycler.getRecycledView(McPropertyDataType.TYPE_CAR_HEADER),this);
-                    bindViewTags(headerView,McPropertyDataType.TYPE_CAR_HEADER,-1,0,columnIndex);
-                }
-                right = left + cellWidth;
-                addView(headerView,0);
-                headerViews.add(headerView);
-                exactlyMeasureChild(headerView,rowHeights[0]);
-                headerView.layout(left,0,right,rowHeights[0]);
-                left = right + dividerSize;
-            }
-
-            /**
-             * layout title
-             */
-            top = rowHeights[0] - scrollY % rowHeights[firstRow] ;
-            for ( int rowIndex = firstRow; rowIndex < adapter.getTotalRowCount() && top < height; rowIndex++ ){
-                int sectionIndex = adapter.getSectionIndex(rowIndex);
-                if ( sectionIndex == -1 ){ //说明是 tableHeader
-                    continue;
-                }
-                bottom = top + rowHeights[rowIndex];
-                if ( adapter.isSectionTitle(rowIndex) ){ //如果是sectionTitle
-                    View sectionTitleView = adapter.getSectionHeaderView(sectionIndex,recycler.getRecycledView(McPropertyDataType.TYPE_GROUP_TITLE),this);
-                    addView(sectionTitleView,0);
-                    sectionTitleViews.add(sectionTitleView);
-                    sectionTitleView.measure(MeasureSpec.EXACTLY | width,rowHeights[rowIndex]);
-                    sectionTitleView.layout(0,top,width,bottom);
-                    bindViewTags(sectionTitleView,McPropertyDataType.TYPE_GROUP_TITLE,sectionIndex,rowIndex,0);
-                }else{ //cellTitle
-                    int rowIndexInSection = adapter.getRowIndexInSection(rowIndex);
-                    View cellTitleView = adapter.getCellTitleView(sectionIndex,rowIndexInSection,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_TITLE),this);
-                    addView(cellTitleView);
-                    cellTitleViews.add(cellTitleView);
-                    exactlyMeasureChild(cellTitleView,rowHeights[rowIndex]);
-                    cellTitleView.layout(0,top,cellWidth,bottom);
-                    bindViewTags(cellTitleView,McPropertyDataType.TYPE_PROPERTY_TITLE,sectionIndex,rowIndex,-1);
-
-                    // layout cellView
-                    left = cellWidth - scrollX % cellWidth;
-                    List<View> viewList = new ArrayList<>();
-                    for ( int columnIndex = firstColumn; columnIndex < realColumnCount && left < width; columnIndex++ ){
-                        View cellOrExtraView = null;
-                        if ( isSupportExtraHeader && columnIndex == realColumnCount -1 ){
-                            cellOrExtraView = adapter.getExtraCellView(sectionIndex,rowIndexInSection,columnIndex,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL_EXTRA),this);
-                            bindViewTags(cellOrExtraView,McPropertyDataType.TYPE_PROPERTY_CELL_EXTRA,sectionIndex,rowIndex,columnIndex);
-                        }else{
-                            cellOrExtraView = adapter.getCellView(sectionIndex,rowIndexInSection,columnIndex,recycler.getRecycledView(McPropertyDataType.TYPE_PROPERTY_CELL),this);
-                            bindViewTags(cellOrExtraView,McPropertyDataType.TYPE_PROPERTY_CELL,sectionIndex,rowIndex,columnIndex);
-                        }
-                        right = left + cellWidth;
-                        addView(cellOrExtraView,0);
-                        viewList.add(cellOrExtraView);
-                        exactlyMeasureChild(cellOrExtraView,rowHeights[rowIndex]);
-                        cellOrExtraView.layout(left,top,right,bottom);
-                        left = right + dividerSize;
-                    }
-                    cellViews.add(viewList);
-                }
-                top = bottom + dividerSize;
-            }
-            Log.e("qinqun","test");
+            scrollBy(0,0);
+            repositionViews();
         }
     }
 
@@ -1231,6 +1186,9 @@ public class McPropertiesView extends ViewGroup{
 
     @Override
     protected int computeVerticalScrollExtent() {
+        if ( adapter == null ){
+            return 0;
+        }
         final float tableSize = height - rowHeights[0];
         final float contentSize = getArraySum(rowHeights,1,adapter.getTotalRowCount());
         final float percentageOfVisibleView = tableSize / contentSize;
@@ -1241,6 +1199,9 @@ public class McPropertiesView extends ViewGroup{
 
     @Override
     protected int computeVerticalScrollOffset() {
+        if ( adapter == null ){
+            return 0;
+        }
         final float maxScrollY = getMaxScrollY();
         final float percentageOfViewScrolled = getActualScrollY() / maxScrollY;
         final int maxHorizontalScrollOffset = height - rowHeights[0] - computeVerticalScrollExtent();

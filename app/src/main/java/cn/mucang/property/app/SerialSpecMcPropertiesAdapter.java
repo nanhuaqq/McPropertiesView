@@ -11,13 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
+
 
 import java.util.BitSet;
 import java.util.List;
 
-import cn.mucang.android.core.config.MucangConfig;
+import cn.mucang.android.core.utils.LogUtils;
 import cn.mucang.android.core.utils.UnitUtils;
+import cn.mucang.property.DuiBiBase;
 import cn.mucang.property.McBasePropertiesAdapter;
 import cn.mucang.property.McPropertyDataType;
 import cn.mucang.property.R;
@@ -26,16 +29,18 @@ import cn.mucang.property.data.CanPeiGroup;
 import cn.mucang.property.data.CanPeiRow;
 import cn.mucang.property.data.CanPeiRowCell;
 import cn.mucang.property.data.GetCarPropertiesResultEntity;
-import cn.mucang.property.utils.DimUtils;
 
 /**
  * Created by qinqun on 2016/6/16.
  * Email : qinqun@mucang.cn
  */
 public class SerialSpecMcPropertiesAdapter extends McBasePropertiesAdapter {
-    private GetCarPropertiesResultEntity getCarPropertiesResultEntity;
+    public static final String TAG = "SerialSpecMcPropertiesAdapter";
+
+    private GetCarPropertiesResultEntity carPropertiesResultEntity;
     private List<CanPeiGroup> sections;
     private List<CanPeiCarEntity> headerCars;
+    private List<CanPeiRowCell> carInfosRowCells;
     private LayoutInflater inflater;
 
     private SparseArray<Integer> rowIndexMapSectionArray;
@@ -44,11 +49,15 @@ public class SerialSpecMcPropertiesAdapter extends McBasePropertiesAdapter {
     private int totalSectionCount;
     private int totalRowCount;
 
-    private int cellWidth ;
+//    private int cellWidth = PublicConstant.WIDTH_PIXELS / 3;
 
     private boolean isForDuibi = false;
 
     private Context context;
+
+    private McPropertiesClickListener mcPropertiesClickListener;
+
+    private boolean isShowAll = true;
 
     public Context getContext() {
         return context;
@@ -59,15 +68,47 @@ public class SerialSpecMcPropertiesAdapter extends McBasePropertiesAdapter {
     }
 
     public SerialSpecMcPropertiesAdapter(Context context, GetCarPropertiesResultEntity getCarPropertiesResultEntity) {
-        this.getCarPropertiesResultEntity = getCarPropertiesResultEntity;
+        this.carPropertiesResultEntity = getCarPropertiesResultEntity;
         this.context = context;
         this.inflater = LayoutInflater.from(context);
-        if (  this.getCarPropertiesResultEntity != null ){
-            this.sections = this.getCarPropertiesResultEntity.getItems();
-            this.headerCars = this.getCarPropertiesResultEntity.getCars();
+        initData();
+    }
+
+    private void initData(){
+        if (  this.carPropertiesResultEntity != null ){
+            try {
+                this.sections = this.carPropertiesResultEntity.getItems();
+                this.headerCars = this.carPropertiesResultEntity.getCars();
+                this.carInfosRowCells = this.carPropertiesResultEntity.getItems().get(0).getItems().get(0).getValues();
+            }catch (NullPointerException e){
+                LogUtils.d(TAG,""+e.getMessage());
+            }
         }
-        float scale = context.getResources().getDisplayMetrics().density;
-        cellWidth =  (int)(120 * scale + 0.5F);
+    }
+
+    public boolean isShowAll() {
+        return isShowAll;
+    }
+
+    public void setShowAll(boolean showAll) {
+        isShowAll = showAll;
+    }
+
+    public McPropertiesClickListener getMcPropertiesClickListener() {
+        return mcPropertiesClickListener;
+    }
+
+    public void setMcPropertiesClickListener(McPropertiesClickListener mcPropertiesClickListener) {
+        this.mcPropertiesClickListener = mcPropertiesClickListener;
+    }
+
+    public GetCarPropertiesResultEntity getCarPropertiesResultEntity() {
+        return carPropertiesResultEntity;
+    }
+
+    public void setCarPropertiesResultEntity(GetCarPropertiesResultEntity carPropertiesResultEntity) {
+        this.carPropertiesResultEntity = carPropertiesResultEntity;
+        initData();
     }
 
     @Override
@@ -100,6 +141,7 @@ public class SerialSpecMcPropertiesAdapter extends McBasePropertiesAdapter {
         if ( rowIndexMapRowIndexInSectionArray == null ){
             rowIndexMapRowIndexInSectionArray = new SparseArray<>();
         }
+
         if ( sectionTitlePositionsSet == null ){
             sectionTitlePositionsSet = new BitSet();
         }
@@ -164,12 +206,12 @@ public class SerialSpecMcPropertiesAdapter extends McBasePropertiesAdapter {
             viewHolder = (CellViewHolder) convertView.getTag();
         }
         try {
-            int padding = DimUtils.dip2px(getContext(),10);
+            int padding = UnitUtils.dip2px(10);
             CanPeiRow canPeiRow = sections.get(section).getItems().get(row);
             final CanPeiRowCell canPeiRowCell = sections.get(section).getItems().get(row).getValues().get(column);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(cellWidth, ViewGroup.LayoutParams.MATCH_PARENT);
+//            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(cellWidth, ViewGroup.LayoutParams.MATCH_PARENT);
             viewHolder.tvParam.setPadding(padding, padding, padding, padding);
-            convertView.setLayoutParams(layoutParams);
+//            convertView.setLayoutParams(layoutParams);
             viewHolder.tvParam.setGravity(Gravity.CENTER);
             //tvParam.setMaxLines(2);
             viewHolder.tvParam.setText(canPeiRowCell.getValue());
@@ -195,6 +237,20 @@ public class SerialSpecMcPropertiesAdapter extends McBasePropertiesAdapter {
                 viewHolder.tvGetRealPrice.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if (!isForDuibi) {
+//                            StatisticsUtil.onEvent(getContext(), "车系参配点击询底价");
+                        } else {
+//                            StatisticsUtil.onEvent(getContext(), "对比详情点击询底价");
+                        }
+//                        Intent intent = new Intent(getContext(), XunDiJiaOrYueShiJiaActivity.class);
+//                        intent.putExtra("cartypeId", canPeiRowCell.getCarId());
+//                        intent.putExtra("orderType", OrderType.GET_PRICE);
+//                        if (!isForDuibi) {
+//                            intent.putExtra("entrance", "车系参配");
+//                        } else {
+//                            intent.putExtra("entrance", "对比详情");
+//                        }
+//                        getContext().startActivity(intent);
                     }
                 });
             } else {
@@ -222,40 +278,59 @@ public class SerialSpecMcPropertiesAdapter extends McBasePropertiesAdapter {
 
     @Override
     public View getTableHeaderView(int column, View convertView, ViewGroup parent) {
-        TextView tvCarTypeName;
-        TextView tvChangeCar;
-        ImageButton ibtnRemove;
-//        DuiBiLinearLayoutButton btnDuibi;
+        CellHeaderViewHolder viewHolder = null;
         if ( convertView == null ){
+            viewHolder = new CellHeaderViewHolder();
             if (!isForDuibi) {
                 convertView = inflater.inflate(R.layout.bj__cxk_cx_canpei_car_block, null, false);
+//                viewHolder.btnDuibi = (DuiBiLinearLayoutButton) convertView.findViewById(R.id.btnDuibi);
+//                viewHolder.btnDuibi.setTag(R.id.tag_click_type,McPropertyDataType.CLICK_TYPE_DUIBI);
             } else {
                 convertView = inflater.inflate(R.layout.bj__cxk_cx_duibi_car_block, null, false);
+                viewHolder.tvChangeCar = (TextView) convertView.findViewById(R.id.tvChangeCar);
+                viewHolder.tvChangeCar.setTag(R.id.tag_click_type, McPropertyDataType.CLICK_TYPE_CHANGECAR);
             }
+            viewHolder.tvCarTypeName = (TextView) convertView.findViewById(R.id.tvCarTypeName);
+            viewHolder.ibtnRemove = (ImageButton) convertView.findViewById(R.id.ibtnRemove);
+
+            viewHolder.tvCarTypeName.setTag(R.id.tag_click_type,McPropertyDataType.CLICK_TYPE_CARNAME);
+            viewHolder.ibtnRemove.setTag(R.id.tag_click_type,McPropertyDataType.CLICK_TYPE_REMOVE);
+            bindViewColumn(column,viewHolder.tvChangeCar,viewHolder.tvCarTypeName,viewHolder.ibtnRemove);
+            convertView.setTag(viewHolder);
+        }else {
+            viewHolder = (CellHeaderViewHolder) convertView.getTag();
         }
 
-        final CanPeiCarEntity canPeiCarEntity = headerCars.get(column);
         try {
             CanPeiGroup canPeiGroup = sections.get(0);
             final CanPeiRowCell canPeiRowCell = canPeiGroup.getItems().get(0).getValues().get(column);
             CanPeiRowCell priceCanPeiRowCell = canPeiGroup.getItems().get(1).getValues().get(column);
             final String carFullName = canPeiRowCell.getValue();
             final String price = priceCanPeiRowCell.getValue();
-            tvCarTypeName = (TextView) convertView.findViewById(R.id.tvCarTypeName);
-            tvCarTypeName.setText(carFullName);
-
+            viewHolder.tvCarTypeName.setText(carFullName);
+            viewHolder.tvCarTypeName.setOnClickListener(onClickListener);
+            viewHolder.ibtnRemove.setOnClickListener(onClickListener);
             if (isForDuibi) { //todo  这里的点击逻辑到底该怎么处理(是移动到 presenter 还是 fragment)
-
+                viewHolder.tvChangeCar.setOnClickListener(onClickListener);
             } else {
-
+//                viewHolder.btnDuibi.setOnClickListener(onClickListener);
             }
-            ibtnRemove = (ImageButton) convertView.findViewById(R.id.ibtnRemove);
-            ibtnRemove.setTag(canPeiRowCell.getCarId());
-            ibtnRemove.setOnClickListener(onCarDeleteListener);
 
         }catch (NullPointerException e){}
         return convertView;
     }
+
+    private void bindViewColumn(int column,View... views){
+        if ( views == null ){
+            return;
+        }
+        for (View view:views) {
+            if ( view != null ){
+                view.setTag(R.id.tag_column,column);
+            }
+        }
+    }
+
 
     @Override
     public View getSectionHeaderView(int section, View convertView, ViewGroup parent) {
@@ -272,8 +347,23 @@ public class SerialSpecMcPropertiesAdapter extends McBasePropertiesAdapter {
 
     @Override
     public View getLeftCornerView(View convertView, ViewGroup parent) {
-        View leftCornerView = inflater.inflate(R.layout.bj__table_leftcorner,parent,false);
-        return leftCornerView;
+        LeftViewHolder leftViewHolder = null;
+        if ( convertView == null ){
+            leftViewHolder = new LeftViewHolder();
+            convertView = inflater.inflate(R.layout.bj__table_leftcorner,parent,false);
+            leftViewHolder.btnShowAllParam = (RadioButton) convertView.findViewById(R.id.btnShowAllParam);
+            leftViewHolder.btnShowDiffentParam = (RadioButton) convertView.findViewById(R.id.btnShowDiffentParam);
+            leftViewHolder.btnShowAllParam.setTag(R.id.tag_click_type,McPropertyDataType.CLICK_TYPE_SHOW_ALL);
+            leftViewHolder.btnShowDiffentParam.setTag(R.id.tag_click_type,McPropertyDataType.CLICK_TYPE_SHOW_DIFF);
+            bindViewColumn(-1,leftViewHolder.btnShowAllParam,leftViewHolder.btnShowDiffentParam);
+            convertView.setTag(leftViewHolder);
+        }else {
+            leftViewHolder = (LeftViewHolder) convertView.getTag();
+        }
+
+        leftViewHolder.btnShowAllParam.setOnClickListener(onClickListener);
+        leftViewHolder.btnShowDiffentParam.setOnClickListener(onClickListener);
+        return convertView;
     }
 
     @Override
@@ -302,35 +392,92 @@ public class SerialSpecMcPropertiesAdapter extends McBasePropertiesAdapter {
         return McPropertyDataType.TYPE_TOTAL_COUNT;
     }
 
-    private View.OnClickListener onCarDeleteListener = new View.OnClickListener() {
+    @Override
+    public void reset() {
+        rowIndexMapSectionArray = null;
+        rowIndexMapRowIndexInSectionArray = null;
+        sectionTitlePositionsSet = null;
+        totalSectionCount = 0;
+        totalRowCount = 0;
+    }
+
+    public interface McPropertiesClickListener extends DuiBiBase.OnDuiBiClickListener{
+        void onCarTypeNameClick(int serialId, int carId);
+        void onChangeCarClick(String brandId, int serialId, int oldCarId);
+        void onAddDuiBi(View v);
+        void onRemoveDuiBi(View v);
+        void onShowAllOrDiff(boolean isShowAll);
+    }
+
+    private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            View parentView = (View) v.getParent();
-            int viewType = (Integer)parentView.getTag(R.id.tag_view_type);
-            int column = (Integer)parentView.getTag(R.id.tag_column);
+            int clickType = (Integer) v.getTag(R.id.tag_click_type);
+            int column = (Integer) v.getTag(R.id.tag_column);
 
-            if ( column >= headerCars.size() ){
-                return;
-            }
-            //首先删除carHeader
-            headerCars.remove(column);
-            for (CanPeiGroup canpeiGroup:sections) {
-                for (CanPeiRow canpeiRow:canpeiGroup.getItems()) {
-                    canpeiRow.getValues().remove(column);
+            if ( clickType == McPropertyDataType.CLICK_TYPE_CARNAME ){
+                if ( mcPropertiesClickListener != null ){
+                    final CanPeiCarEntity canPeiCarEntity = headerCars.get(column);
+                    final CanPeiRowCell canPeiRowCell = carInfosRowCells.get(column);
+                    mcPropertiesClickListener.onCarTypeNameClick(canPeiCarEntity.getSerialId(),canPeiRowCell.getCarId());
+                }
+            }else if ( clickType == McPropertyDataType.CLICK_TYPE_CHANGECAR ){
+                if ( mcPropertiesClickListener != null ){
+                    final CanPeiCarEntity canPeiCarEntity = headerCars.get(column);
+                    final CanPeiRowCell canPeiRowCell = carInfosRowCells.get(column);
+                    mcPropertiesClickListener.onChangeCarClick(canPeiCarEntity.getBrandId(),canPeiCarEntity.getSerialId(),canPeiRowCell.getCarId());
+                }
+            }else if ( clickType == McPropertyDataType.CLICK_TYPE_DUIBI ){
+                //todo:对比的处理暂时不做
+            }else if ( clickType == McPropertyDataType.CLICK_TYPE_REMOVE ){
+                removeByColumn(column);
+            }else if ( clickType == McPropertyDataType.CLICK_TYPE_SHOW_ALL ){
+                if ( mcPropertiesClickListener != null ){
+                    RadioButton radioButton = (RadioButton) v;
+                    radioButton.toggle();
+                    mcPropertiesClickListener.onShowAllOrDiff(true);
+                }
+            }else if ( clickType == McPropertyDataType.CLICK_TYPE_SHOW_DIFF ){
+                if ( mcPropertiesClickListener != null ){
+                    RadioButton radioButton = (RadioButton) v;
+                    radioButton.toggle();
+                    mcPropertiesClickListener.onShowAllOrDiff(false);
                 }
             }
-
-            rowIndexMapSectionArray = null;
-            rowIndexMapRowIndexInSectionArray = null;
-            sectionTitlePositionsSet = null;
-            totalSectionCount = 0;
-            totalRowCount = 0;
-            notifyDataSetChanged();
         }
     };
+
+    private void removeByColumn(int column){
+        if ( column >= headerCars.size() ){
+            return;
+        }
+        //首先删除carHeader
+        headerCars.remove(column);
+        for (CanPeiGroup canpeiGroup:sections) {
+            for (CanPeiRow canpeiRow:canpeiGroup.getItems()) {
+                canpeiRow.getValues().remove(column);
+            }
+        }
+
+        reset();
+        notifyDataSetChanged();
+    }
+
+    static class LeftViewHolder {
+        RadioButton btnShowAllParam, btnShowDiffentParam;
+    }
 
     static class CellViewHolder {
         TextView tvParam;
         TextView tvGetRealPrice;
     }
+
+    static class CellHeaderViewHolder{
+        TextView tvCarTypeName;
+        TextView tvChangeCar;
+        ImageButton ibtnRemove;
+//        DuiBiLinearLayoutButton btnDuibi;
+    }
+
+
 }

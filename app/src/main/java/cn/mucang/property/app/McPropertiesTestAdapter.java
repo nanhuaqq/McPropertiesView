@@ -228,6 +228,11 @@ public class McPropertiesTestAdapter extends McBasePropertiesAdapter{
         return McPropertyDataType.TYPE_TOTAL_COUNT;
     }
 
+    @Override
+    public void reset() {
+
+    }
+
     private View.OnClickListener onCarTitleClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

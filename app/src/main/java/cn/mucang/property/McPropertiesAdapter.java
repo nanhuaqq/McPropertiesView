@@ -5,7 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by nanhuaqq on 2016/5/12.
+ * Created by qinqun on 2016/6/16.
+ * Email : qinqun@mucang.cn
  */
 public interface McPropertiesAdapter {
 
@@ -51,7 +52,7 @@ public interface McPropertiesAdapter {
      * @param parent
      * @return
      */
-    public View getExtraTableHeaderView(int column,View convertView,ViewGroup parent);
+    public View getExtraTableHeaderView(int column, View convertView, ViewGroup parent);
 
     /**
      * 支持额外cell
@@ -62,9 +63,11 @@ public interface McPropertiesAdapter {
      * @param parent
      * @return
      */
-    public View getExtraCellView(int section,int row,int column,View convertView,ViewGroup parent);
+    public View getExtraCellView(int section, int row, int column, View convertView, ViewGroup parent);
 
     public int getItemViewType(int section, int row, int column);
 
     public int getViewTypeCount();
+
+    public void reset();
 }
