@@ -984,6 +984,8 @@ public class McPropertiesView extends ViewGroup{
         final int heightSize = MeasureSpec.getSize(heightMeasureSpec);
         setMeasuredDimension(widthSize, heightSize);
         if ( adapter != null && needRelayout ){
+            width = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
+            height = getMeasuredHeight() -getPaddingTop() - getPaddingBottom();
             reset();
             measureRowHeights();
             scrollBounds(0,0);
@@ -993,8 +995,6 @@ public class McPropertiesView extends ViewGroup{
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        width = r - l;
-        height = b - t;
         if ( adapter == null ){
             return;
         }

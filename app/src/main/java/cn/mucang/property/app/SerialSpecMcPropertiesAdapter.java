@@ -29,6 +29,7 @@ import cn.mucang.property.data.CanPeiGroup;
 import cn.mucang.property.data.CanPeiRow;
 import cn.mucang.property.data.CanPeiRowCell;
 import cn.mucang.property.data.GetCarPropertiesResultEntity;
+import cn.mucang.property.utils.DimUtils;
 
 /**
  * Created by qinqun on 2016/6/16.
@@ -206,7 +207,7 @@ public class SerialSpecMcPropertiesAdapter extends McBasePropertiesAdapter {
             viewHolder = (CellViewHolder) convertView.getTag();
         }
         try {
-            int padding = UnitUtils.dip2px(10);
+            int padding = DimUtils.dip2px(getContext(),10);
             CanPeiRow canPeiRow = sections.get(section).getItems().get(row);
             final CanPeiRowCell canPeiRowCell = sections.get(section).getItems().get(row).getValues().get(column);
 //            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(cellWidth, ViewGroup.LayoutParams.MATCH_PARENT);
